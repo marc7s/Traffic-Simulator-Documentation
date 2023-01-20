@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{preamble}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+
+% Custom command to enter the individual performances
+\newcommand{\performance}[2]{\textbf{#1}\\#2}
+
+% Custom command for a new logbook entry. Param 1 is the LP, Param 2 is the week. So `\logentry{3}{5}` would be `LP3 Week 5`
+\newcommand{\logentry}[2]{
+    \subsection{Week #2}
+    \input{modules/LP#1 Week #2}
+    \newpage
+}
+
+\title{Loggbok}
+\allauthors
+\date{Spring 2023}
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+
+\section{LP3}
+    \logentry{3}{1}
+
+\section{LP4}
+
+
+
+\end{document}

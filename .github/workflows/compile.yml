@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: List Tex files
         id: texfiles
-        uses: ./../.github/actions/list-tex-files
+        uses: ./.github/actions/list-tex-files
         with:
           path: Meetings/Meeting_protocols
       - name: Print tex files

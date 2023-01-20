@@ -23,7 +23,7 @@ jobs:
   compile_meeting_protocols:
     runs-on: ubuntu-latest
     container:
-      image: xu-cheng/texlive-full:latest
+      image: ghcr.io/xu-cheng/texlive-full:latest
     steps:
       - name: Compile meeting protocols
         run: |

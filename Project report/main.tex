@@ -1,0 +1,79 @@
+\documentclass[titlepage]{article}
+\usepackage{preamble}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{standalone}
+\usepackage{rotating}
+\usepackage[a4paper]{geometry}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+
+% Redefine titlepage style
+\fancypagestyle{empty}{%
+    \fancyhf{}
+    \lfoot{%
+        Bachelors Thesis \\
+        \emph{Data engineering and IT} \\
+        Chalmers University of Techology
+    }
+}
+
+% Redefine glossary style
+\fancypagestyle{plain}{%
+    \fancyhf{}
+}
+
+\title{%
+    \Huge \project
+}
+\author{
+    \martin \and \felix \and \hannes
+    \and \arvid \and \marcus \and \jakob
+}
+\date{2023-01-20}
+
+
+
+\begin{document}
+\maketitle
+\newpage
+
+% Table of contents
+\tableofcontents
+\thispagestyle{plain}
+\newpage
+
+% Glossary
+\section*{Glossary}
+    \input{modules/glossary}
+\thispagestyle{plain}
+\newpage
+
+\section{Introduction}
+    \input{modules/introduction}
+
+
+% References
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography}
+
+% Bilagor
+\appendix
+    \section{Appendix 1}
+        \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.2]{appendix/Unity.jpg}
+        \caption{Unity logo}
+        \label{fig:unity}
+    \end{figure}
+
+    \section{Appendix 2}
+        This is where we will place appendix 2
+
+\end{document}

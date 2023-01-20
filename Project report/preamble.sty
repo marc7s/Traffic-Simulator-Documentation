@@ -1,0 +1,47 @@
+\ProvidesPackage{preamble}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{csquotes}
+\usepackage{fancyhdr}
+\usepackage[parfill]{parskip}
+\usepackage{xcolor}
+\usepackage{siunitx}
+
+% Full reference using hyperref. Example output: 3.2 Section name
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\ref*{#1} \nameref*{#1}}}
+
+% Authors
+\newcommand{\martin}{Martin Blom}
+\newcommand{\felix}{Felix Jönsson}
+\newcommand{\hannes}{Hannes Kaulio}
+\newcommand{\arvid}{Arvid Nyberg}
+\newcommand{\marcus}{Marcus Schagerberg}
+\newcommand{\jakob}{Jakob Windt}
+
+
+% Centered quote
+\newenvironment{centeredquote}{\begin{quote}\Large\centering}{\end{quote}}
+
+% Code snippets
+\definecolor{light-gray}{gray}{0.85}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+
+% Unit in equation
+\newcommand{\unitformat}[1]{\,\footnotesize\mathrm{\si{#1}}}
+
+% Units
+\DeclareSIUnit{\microsecond}{\SIUnitSymbolMicro s}
+
+% Names
+\newcommand{\project}{Traffic Simulator}
+
+% Appendix
+\let\oldappendix\appendix
+\renewcommand{\appendix}{\oldappendix\section*{Appendix}\addcontentsline{toc}{section}{Appendix}\renewcommand{\thesubsection}{\Alph{subsection}}}
+
+% Hide fancyhdr lines
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}

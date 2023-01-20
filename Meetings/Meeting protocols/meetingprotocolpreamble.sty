@@ -1,0 +1,41 @@
+\ProvidesPackage{meetingprotocolpreamble}
+
+\usepackage{fancyhdr}
+
+\setcounter{tocdepth}{2}
+
+% Convert an `\and` separated list to a comma separated list
+\newcommand{\andtolist}[1]{\def\and{, }#1}
+
+% Display an info entry on the first page
+\newcommand{\info}[2]{\textbf{#1:} #2\\ \newline}
+
+% Display the date and time of the meeting
+\newcommand{\timeanddate}[1]{\info{Time}{#1}}
+
+% Display the place of the meeting
+\newcommand{\place}[1]{\info{Place}{#1}}
+
+% Display the called individuals
+\newcommand{\called}[1]{\info{Called}{\andtolist{#1}}}
+
+% Display the attended individuals
+\newcommand{\attended}[1]{\info{Attended}{\andtolist{#1}}}
+
+\fancypagestyle{first}{
+  \fancyhf{}
+  \fancyfoot[L]{{\scriptsize Secretary: \secretary}}
+  \fancyfoot[R]{{\scriptsize Adjuster: \adjuster}}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\fancypagestyle{fancy}{
+  \lhead{\it{\group}}
+  \chead{}
+  \rhead{\it{\meetingtitle}}
+  \fancyfoot[L]{{\scriptsize Secretary: \secretary}}
+  \fancyfoot[R]{{\scriptsize Adjuster: \adjuster}}
+  \renewcommand{\headrulewidth}{0.3pt}
+  \renewcommand{\footrulewidth}{0pt}
+}

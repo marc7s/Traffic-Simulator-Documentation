@@ -14,6 +14,10 @@ jobs:
             Logbook/Logbook.tex
             Notes/Notes.tex
           work_in_root_file_dir: true
+      - name: Compile meeting protocols
+        uses: docker://xucheng/texlive-full:latest
+        run: |
+          find . -name "Meetings/Meeting_protocols/*.tex" -exec latexmk -pdf -file-line-error -interaction=nonstopmode {} \;
       - name: Commit PDF file
         uses: EndBug/add-and-commit@v9
         with:

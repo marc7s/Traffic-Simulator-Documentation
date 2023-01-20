@@ -21,9 +21,9 @@ jobs:
           message: 'Upload compiled PDFs'
           author_name: Compiler Bot
   compile_meeting_protocols:
-    name: Compile meeting protocols
     runs-on: ubuntu-latest
     container:
       image: xu-cheng/texlive-full:latest
-    run: |
-      find "Meetings/Meeting_protocols" -name "*.tex" -exec latexmk -pdf -file-line-error -interaction=nonstopmode {} \;
+    steps:
+      run: |
+       find "Meetings/Meeting_protocols" -name "*.tex" -exec latexmk -pdf -file-line-error -interaction=nonstopmode {} \;

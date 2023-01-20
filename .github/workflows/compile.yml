@@ -25,5 +25,6 @@ jobs:
     container:
       image: xu-cheng/texlive-full:latest
     steps:
-      run: |
-       find "Meetings/Meeting_protocols" -name "*.tex" -exec latexmk -pdf -file-line-error -interaction=nonstopmode {} \;
+      - name: Compile meeting protocols
+        run: |
+          find "Meetings/Meeting_protocols" -name "*.tex" -exec latexmk -pdf -file-line-error -interaction=nonstopmode {} \;

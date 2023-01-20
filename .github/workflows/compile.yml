@@ -1,5 +1,5 @@
 name: Compile LaTeX documents
-on: [push, pull_request]
+on: [push]
 jobs:
   compile_latex_documents:
     runs-on: ubuntu-latest
@@ -14,14 +14,16 @@ jobs:
             Logbook/Logbook.tex
             Notes/Notes.tex
           work_in_root_file_dir: true
-      - name: Compile meeting protocols
-        uses: docker://xucheng/texlive-full:latest
-        with:
-          run: |
-            find "Meetings/Meeting_protocols" -name "*.tex" -exec latexmk -pdf -file-line-error -interaction=nonstopmode {} \;
       - name: Commit PDF file
         uses: EndBug/add-and-commit@v9
         with:
           add: "['Project_report/Project_report.pdf', 'Logbook/Logbook.pdf', 'Notes/Notes.pdf']"
           message: 'Upload compiled PDFs'
           author_name: Compiler Bot
+  compile_meeting_protocols:
+    name: Compile meeting protocols
+    runs-on: ubuntu-latest
+    container:
+      image: xu-cheng/texlive-full:latest
+    run: |
+      find "Meetings/Meeting_protocols" -name "*.tex" -exec latexmk -pdf -file-line-error -interaction=nonstopmode {} \;

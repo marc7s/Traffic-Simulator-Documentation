@@ -23,11 +23,10 @@ jobs:
   compile_meeting_protocols:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Find Tex files
+      - uses: actions/checkout@v3
+      - name: List Tex files
         id: texfiles
-        uses: ./.github/actions/ListTexFiles
+        uses: ./.github/actions/list-tex-files
         with:
           path: Meetings/Meeting_protocols
       - name: Print tex files

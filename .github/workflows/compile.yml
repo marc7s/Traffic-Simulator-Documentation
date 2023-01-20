@@ -4,7 +4,7 @@ jobs:
   compile_meeting_protocols:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v1
       - name: List Tex files
         id: texfiles
         uses: ./.github/actions/list-tex-files

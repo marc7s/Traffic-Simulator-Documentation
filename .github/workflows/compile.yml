@@ -11,8 +11,8 @@ jobs:
         with:
           root_file: Project_report/Project_report.tex
           work_in_root_file_dir: true
-      - name: Upload PDF file
-        uses: actions/upload-artifact@v3
+      - name: Commit PDF file
+        uses: EndBug/add-and-commit@v9
         with:
-          name: PDF
-          path: Project_report/Project_report.pdf
+          add: Project_report/Project_report.pdf
+          message: 'Upload compiled PDFs'

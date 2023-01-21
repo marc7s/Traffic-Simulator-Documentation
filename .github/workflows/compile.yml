@@ -31,9 +31,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [compile_latex_documents, compile_meeting_protocols]
     steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
       - name: Commit PDF files
         uses: EndBug/add-and-commit@v9
         with:
-          add: '.'
+          add: '\\*.pdf'
           message: 'Upload compiled PDFs'
           author_name: Compiler Bot

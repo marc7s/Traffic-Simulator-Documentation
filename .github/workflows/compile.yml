@@ -20,11 +20,3 @@ jobs:
           add: "['Project_report/Project_report.pdf', 'Logbook/Logbook.pdf', 'Notes/Notes.pdf']"
           message: 'Upload compiled PDFs'
           author_name: Compiler Bot
-  compile_meeting_protocols:
-    runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/xu-cheng/texlive-full:latest
-    steps:
-      - name: Compile meeting protocols
-        run: |
-          find "Meetings/Meeting_protocols" -name "*.tex" -exec latexmk -pdf -file-line-error -interaction=nonstopmode {} \;

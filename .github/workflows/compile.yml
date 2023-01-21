@@ -1,16 +1,11 @@
 name: Compile LaTeX documents
 on: [push]
 jobs:
-  setup:
+  compile_latex_documents:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v3
-  
-  compile_latex_documents:
-    runs-on: ubuntu-latest
-    needs: [setup]
-    steps:
       - name: Compile LaTeX documents
         uses: xu-cheng/latex-action@v2
         with:
@@ -22,8 +17,9 @@ jobs:
       
   compile_meeting_protocols:
     runs-on: ubuntu-latest
-    needs: [setup]
     steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
       - name: Compile meeting protocols
         uses: xu-cheng/latex-action@v2
         with:

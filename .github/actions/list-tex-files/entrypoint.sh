@@ -6,4 +6,4 @@ files=$(find $1 -type f -name "*.tex" | tr "\n" ">" | sed 's/\(.*\)>/\1</' | sed
 #files=files | sed -r 's/(.*),/\1/'
 fileArray="[\"${files}]"
 echo "${fileArray}"
-echo "files='${fileArray}'" >> $GITHUB_OUTPUT
+echo "files=${fileArray}" >> $GITHUB_OUTPUT

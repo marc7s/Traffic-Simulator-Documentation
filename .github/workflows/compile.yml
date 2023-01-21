@@ -26,7 +26,7 @@ jobs:
       - name: Commit PDF files
         uses: EndBug/add-and-commit@v9
         with:
-          add: '\*.pdf'
+          add: '\\*.pdf'
           message: 'Upload compiled PDFs'
           author_name: Compiler Bot
       

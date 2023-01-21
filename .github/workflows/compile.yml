@@ -28,4 +28,6 @@ jobs:
         with:
           add: '*.pdf'
           message: 'Upload compiled PDFs'
+          author_name: Compiler Bot
+          author_email: actions@github.com
           default_author: github_actions

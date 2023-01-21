@@ -19,4 +19,3 @@ jobs:
         with:
           add: "['Project_report/Project_report.pdf', 'Logbook/Logbook.pdf', 'Notes/Notes.pdf']"
           message: 'Upload compiled PDFs'
-          author_name: Compiler Bot

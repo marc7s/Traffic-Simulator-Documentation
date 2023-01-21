@@ -11,7 +11,7 @@ jobs:
         with:
           path: Meetings/Meeting_protocols
       - name: Print tex files
-        run: echo "${{ steps.texfiles.outputs.files }}"
+        run: echo ${{ steps.texfiles.outputs.files }}
       - name: Compile documents
         uses: xu-cheng/latex-action@v2
         with:

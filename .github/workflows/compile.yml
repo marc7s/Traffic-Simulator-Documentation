@@ -12,3 +12,8 @@ jobs:
           path: Meetings/Meeting_protocols
       - name: Print tex files
         run: echo "${{ steps.texfiles.outputs.files }}"
+      - name: Compile documents
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: ${{ fromJSON(steps.texfiles.outputs.files) }}
+          work_in_root_file_dir: true

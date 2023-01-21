@@ -15,5 +15,6 @@ jobs:
       - name: Compile documents
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: ${{ fromJSON(steps.texfiles.outputs.files) }}
+          root_file: "Meetings/Meeting_protocols/*.tex"
+          glob_root_file: true
           work_in_root_file_dir: true

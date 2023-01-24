@@ -11,6 +11,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: |
+            Project_plan/Project_plan.tex
             Project_report/Project_report.tex
             Logbook/Logbook.tex
             Notes/Notes.tex

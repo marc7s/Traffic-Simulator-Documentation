@@ -15,7 +15,7 @@
 \usepackage{siunitx}
 
 % Redefine titlepage style
-\fancypagestyle{empty}{%
+\fancypagestyle{empty}{
     \fancyhf{}
     \lfoot{%
         Bachelors Thesis \\
@@ -30,10 +30,10 @@
 }
 
 \title{%
-    \Huge \project
+    \Huge Project plan
 }
 \allauthors
-\date{2023-01-20}
+\date{2023-01-23}
 
 
 
@@ -52,9 +52,25 @@
 \thispagestyle{plain}
 \newpage
 
+% Introduction
 \section{Introduction}
     \input{modules/introduction}
 
+% Purpose
+\section{Purpose}
+    \input{modules/purpose}
+
+% Problem
+\section{Problem}
+    \input{modules/problem}
+
+% Limitations
+\section{Limitations}
+    \input{modules/limitations}
+
+% Method
+\section{Method}
+    \input{modules/method}
 
 % References
 \bibliographystyle{IEEEtran}

@@ -37,8 +37,17 @@
 % Units
 \DeclareSIUnit{\microsecond}{\SIUnitSymbolMicro s}
 
-% Names
+% Reference to glossary word
+\newcommand{\glossaryword}[2]{\hyperref[itm:#1]{#2}}
+
+% Project name
 \newcommand{\project}{Traffic Simulator}
+
+% Department
+\newcommand{\department}{Computer engineering and IT}
+
+% Convert an `\and` separated list to a comma separated list
+\newcommand{\andtolist}[1]{\def\and{, }#1}
 
 % Appendix
 \let\oldappendix\appendix

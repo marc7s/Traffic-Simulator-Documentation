@@ -1,7 +1,14 @@
 In order to achieve a traffic simulation that clearly and visually shows environmental impact as well as traffic congestion, several problems will have to be solved.
 
-Firstly, the environment in which all \glossaryword{agent}{agents} interact will have to be created. Road networks and its corresponding traffic signs have to be generated.
+%% Felix
+There are many ways to go about when simulating a traffic flow, but based on the purpose and the established limitations of our project we have chosen to implement a microscopic simulation which offers a fitting high level of granularity of interplay between the environment and the individual agents. 
+
+%% Hannes (?), Felix
+Firstly, the environment in which all \glossaryword{agent}{agents} respond to and interact within will have to specified and created. Static environmental objects such as roads and corresponding traffic signs will have to be generated in a modular manner to allow the end user to set up and run their customized simulation. 
 
 Furthermore, all individual traffic elements such as cars, traffic lights, buses, etc will have to be simulated. In order to accomplish this, agent-based modeling will be used \cite{agent-based-modeling}. All these traffic elements will be simulated as individual agents all abiding to a set of rules. The problem will be to decide all the different rules and logic for the various agents. Vehicle agents will for example need to interact with the different traffic signs and follow the road rules.  
 
-As a result of using an agent-based simulation, performance will surely become an issue. All agents in the simulation will have to be continuously updated according to their rules. This can become computationally expensive when the number of agents increases. Performance-based design choices will have to be made for city-scale simulations to be possible.
+As a result of using an microscopic agent-based approach, performance will surely become an issue. All agents in the simulation will have to be continuously updated according to their rules. This can become computationally expensive when the number of agents increases. Performance-based design choices will have to be made for city-scale simulations to be possible.
+
+%% Felix
+Finally, since the goal of our project is to offer a user-friendly tool, a user interface will have to be developed. This interface needs to clearly communicate which parameters the user can tweak in the simulation and offer an intuitive way of doing so. The interface will also need to display relevant information with regards to statistics of the simulation in a manner that is easy to comprehend. Consideration will have to be put into which design patterns to implement to enable this. 

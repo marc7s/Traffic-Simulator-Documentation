@@ -19,6 +19,19 @@
 % Display the attended individuals
 \newcommand{\attended}[1]{\info{Attended}{\andtolist{#1}}}
 
+% Set the title
+\newcommand{\settitle}[1]{
+    \title{
+        \Huge Minutes\\
+        \vspace{0.5cm}
+        \Large #1
+    }
+}
+
+% Approve the previous minutes
+\newcommand{\approve}[1]{Approved by #1.}
+
+
 \fancypagestyle{first}{
   \fancyhf{}
   \fancyfoot[L]{{\scriptsize Secretary: \secretary}}
@@ -30,7 +43,7 @@
 \fancypagestyle{fancy}{
   \lhead{\it{\group}}
   \chead{}
-  \rhead{\it{\meetingtitle}}
+  \rhead{\it{\meetingname}}
   \fancyfoot[L]{{\scriptsize Secretary: \secretary}}
   \fancyfoot[R]{{\scriptsize Adjuster: \adjuster}}
   \renewcommand{\headrulewidth}{0.3pt}

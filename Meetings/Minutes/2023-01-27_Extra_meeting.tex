@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage{../../preamble}
-\usepackage{meeting_protocol_preamble}
+\usepackage{minutes_preamble}
 \usepackage{fancyhdr}
 
 
@@ -8,7 +8,7 @@
 \newcommand{\meetingdate}{2023-01-27}
 \newcommand{\meetingtime}{16:00}
 \newcommand{\meetingplace}{Distans, Discord}
-\newcommand{\meetingtitle}{Extra meeting}
+\newcommand{\meetingname}{Extra meeting}
 \newcommand{\secretary}{\martin}
 \newcommand{\adjuster}{\hannes}
 \newcommand{\attendees}{\members}
@@ -20,7 +20,7 @@
 \begin{document}
     %!!!!! Do not touch !!!!!%
     \begin{titlepage}
-        \title{\meetingtitle}
+        \settitle{\meetingname}
         \date{\meetingdate}
         \maketitle
         
@@ -40,7 +40,7 @@
         Meeting open, no additional
 
     \section{Approval of previous minutes}
-        \hannes
+        \approve{\hannes}
         
     \section{Notes}
         \begin{itemize}

@@ -1,4 +1,19 @@
+%% Marcus
 The tool will be developed in Unity, a cross platform game engine. In order to collaborate, the project will be stored in a Git repository. This also allows for version control and the opportunity to revert to previous versions for identification of bugs or if something would corrupt. Since a Unity project does not consist of pure text or code files, additional steps have to be taken in order to avoid merge conflicts or other issues that can arise when collaborating in a version control system. Therefore each developer will have their own scene in Unity and updates to the project will mainly take place as changes to \glossaryword{prefab}{prefabs}, which are reusable objects that can be used as templates.
+
+%% Felix
+\subsection{Game Engine and Libraries}
+Unity is a cross-platform game engine and development environment which comes with a plethora of useful tools for developing software that communicate a 3D environment. It is currently the most used game engine, holding a market share of 38\% within the game engine market. From initially being marketed as highly accessible game-engine, it has with time grown into a versatile tool that can be used for a wide range of applications, including animation, simulation, VR, architectural visualisation, and more. With the above in mind, together with the massive amount of high quality documentation available and high number of asset plugins available, we motivate our choice of engine to realise the simulation in. 
+
+%% Felix
+\subsection{Modeling}
+We motivate our choice of going with an agent based approach by its ability to capture and convey complex behaviour that otherwise would have required very complex mathematics. Since we "only" need to decide and configure how the agents react to the simulation environment, this will typically be enough to allow us to capture interesting emergent system behaviour that would have required the use of complex differential equations if modeled from a macroscopic perspective using techniques derived from fluid dynamics. 
+
+%% Felix //Började förkorta till ABM här
+Since our goal is to make a product that can easily convey both statistical information of the simulation as well as the first-hand experience of how the traffic actually will behave in the form of exploring the environment in real- time 3D, this further motivates our decision to go with a ABM approach. While ABM is classified as a microscopic model, it still allows for gathering data from each autonomous agent and aggregating this in the form of statistics. On the other hand, by actually rendering the simulation and each agent in real time, this will allow the user to see the effect of the parameters they supplied and set for the environment. This could for example be in the form of observing a crossing, or following one specific agent. 
+
+%% Felix // Iteratively är ett ord, ignorera
+ABM also offers a high degree of flexibility where the model makes it easy to construct and inject new agents with different behavior, heuristics, and so on. This will be important both for the development team and the end user experience since this property will allow us to iteratively adapt the complexity of our simulation as the development process proceed, and then easily offer our users way of tweaking different behaviors. The ability to easily adjust the complexity of the model is highly valued by the development team as this allows us to adapt and make changes as needed during the course of the project. This is particularly important as the team has not previously worked on a project of this nature, and thus, flexibility serves as a safety net for any potential shortcomings in product planning. 
 
 %% Felix
 \subsection{Testing}

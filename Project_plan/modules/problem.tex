@@ -1,14 +1,19 @@
 In order to achieve a traffic simulation that clearly and visually shows environmental impact as well as traffic congestion, several problems will have to be solved.
 
 %% Felix
-There are many ways to go about when simulating a traffic flow, but based on the purpose and the established limitations of our project we have chosen to implement a microscopic simulation which offers a fitting high level of granularity of interplay between the environment and the individual agents. 
+There are many ways to go about when simulating a traffic flow, but based on the purpose and the established limitations of our project we have chosen to implement an agent based simulation which offers a fitting high level of granularity of interplay between the environment and the individual agents. 
 
 %% Hannes (?), Felix
 Firstly, the environment in which all \glossaryword{agent}{agents} respond to and interact within will have to specified and created. Static environmental objects such as roads and corresponding traffic signs will have to be generated in a modular manner to allow the end user to set up and run their customized simulation. 
 
-Furthermore, all individual traffic elements such as cars, traffic lights, buses, etc will have to be simulated. In order to accomplish this, agent-based modeling will be used \cite{agent-based-modeling}. All these traffic elements will be simulated as individual agents all abiding to a set of rules. The problem will be to decide all the different rules and logic for the various agents. Vehicle agents will for example need to interact with the different traffic signs and follow the road rules.  
+Furthermore, all individual traffic elements such as cars, traffic lights, buses, etc will have to be simulated. In order to accomplish this, agent-based modeling will be used \cite{agent-based-modeling}. All these traffic elements will be simulated as individual agents  abiding to a set of rules. The problem will be to decide the different rules and logic for the various agents. Vehicle agents will for example need to interact with the different traffic signs and follow the specified road rules.
+%%Felix 
+There also exists implicit and more subtle rules that govern movement in public spaces
 
-As a result of using an microscopic agent-based approach, performance will surely become an issue. All agents in the simulation will have to be continuously updated according to their rules. This can become computationally expensive when the number of agents increases. Performance-based design choices will have to be made for city-scale simulations to be possible.
+As a result of using an agent-based approach, performance will surely become an issue. All agents in the simulation will have to be continuously updated according to their rules. This can become computationally expensive when the number of agents increases. Performance-based design choices will have to be made for city-scale simulations to be possible.
+
+%% Felix
+Other issues that will have to be resolved is how to process the order of execution both from a low level perspective such as order of execution of functions within an agent or environment object, as well as on a higher perspective such as order priority amongst different entities in the simulation. Failing to do so might otherwise result in subtle faulty behavior that can be hard to track down the cause of. Unity already have some native support for this in the form of different update events with varying priority that Unity objects (classes inheriting from Unity's base class, monobehaviour) can subscribe to in order customize the order of execution. It is however not clear at the moment of writing this paper if this will be enough to ensure easy configuration of execution priority or offer the necessary transparency. Decisions will have to be made if the team should implement our own ABM framework or make use of existing open source unity assets such as ABMU.
 
 %% Felix
 Finally, since the goal of our project is to offer a user-friendly tool, a user interface will have to be developed. This interface needs to clearly communicate which parameters the user can tweak in the simulation and offer an intuitive way of doing so. The interface will also need to display relevant information with regards to statistics of the simulation in a manner that is easy to comprehend. Consideration will have to be put into which design patterns to implement to enable this. 

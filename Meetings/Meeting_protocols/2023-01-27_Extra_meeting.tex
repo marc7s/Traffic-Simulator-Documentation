@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{../../preamble}
+\usepackage{meeting_protocol_preamble}
+\usepackage{fancyhdr}
+
+
+%%%%% Update this each meeting %%%%%
+\newcommand{\meetingdate}{2023-01-27}
+\newcommand{\meetingtime}{16:00}
+\newcommand{\meetingplace}{Distans, Discord}
+\newcommand{\meetingtitle}{Extra meeting}
+\newcommand{\secretary}{\martin}
+\newcommand{\adjuster}{\hannes}
+\newcommand{\attendees}{\members}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+  
+\begin{document}
+    %!!!!! Do not touch !!!!!%
+    \begin{titlepage}
+        \title{\meetingtitle}
+        \date{\meetingdate}
+        \maketitle
+        
+        \thispagestyle{first}
+        
+        \timeanddate{\meetingdate \space \meetingtime}
+        \place{\meetingplace}
+        \called{\members}
+        \attended{\attendees}
+    \end{titlepage}
+    \newpage
+    \pagestyle{fancy}
+    %!!!!!!!!!!!!!!!!!!!!!!!!%
+
+    %%%%% Meeting protocol %%%%%
+    \section{Opening}
+        Meeting open, no additional
+
+    \section{Approval of previous meeting protocol}
+        \hannes
+        
+    \section{Notes}
+        \begin{itemize}
+            \item Look at Edy's car physics (Assets to buy)
+        \end{itemize}
+
+    \section{MVP}
+        Work areas
+        \begin{itemize}
+            \item Car - 1. Working physics model, 2. Car steering (manual and scripted)
+            \item Map - 1. One road system as a small circular track, 2. One as a small block. 
+            \item Road Architect - 1. Lane generation, 2. Change default materials
+            \item Cameras - Menu for switching between cameras and keybinds. Overview cam, car follow cam, free cam, car FPV. Extra: car selection
+        \end{itemize}
+
+    \section{Discussion}
+        
+
+    \section{Decisions}
+        \begin{itemize}
+            \item It was decided to use Road Architect for building roads.
+            \item It was decided to use Unity's new input system.
+            \item It was decided to use Unity's new UI ToolKit
+        \end{itemize}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+

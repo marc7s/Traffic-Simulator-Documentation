@@ -1,0 +1,26 @@
+% Marcus
+
+A time plan was created in order to structure the project and plan the different parts in time, see appendix \fullref{time-plan-pdf}. It is an aid during the sprint plannings as well as when defining the requirements for the next version of the software. The time plan is split into two different sections, administration and product, indicated by the colours. Each task in the time plan has a duration under which we plan on finishing each task, as well as the stated deadline.
+
+The administrative tasks in blue have definitive deadlines, whereas the green product tasks have deadlines based on when we estimate them to be completed. The product tasks are split into the different phases, where the goal at the end of each phase are the software iterations with increasing capability. In order to explain the product tasks, a brief description of each one is presented below.
+
+\subsection{Autonomous vehicles}
+    The goal of this task is to create a working vehicle model that can be controlled by the user as well as through code. This will allow the vehicles to be controlled autonomously, enabling the simulation of vehicles traversing roads in our model.
+
+\subsection{Navigation}
+    A navigation system is required to direct the vehicles around the road network, allowing them to travel between different places on the map. As it is possible to create a graph representation of the road network, the navigation system can be implemented as a graph search algorithm.
+
+\subsection{UI}
+    To control the simulation a user interface needs to be designed. It should allow the user to control the parameters of the simulation, such as simulation speed and vehicle counts. It should also give the user additional controls, including camera switching and providing context menus with information for example when selecting a car.
+
+\subsection{Statistics}
+    As part of the UI the statistics related to the simulation needs to be displayed. The statistics should allow for different aggregates, for example displaying the average speed of the entire road network, as well as for a single road or even a single vehicle.
+
+\subsection{Map editor}
+    In order to create the map to be used in the simulation a map editor needs to be created. This will also allow the user to update the map, examining how different road networks affect the traffic flows.
+
+\subsection{Demo city}
+    A city used for demonstrating the product needs to be created. This should incorporate the different features such as intersections, public transport routes and identification of bottlenecks in the road network.
+
+\subsection{Public transport}
+    Travelling by public transport instead of with your own vehicle reduces both the emissions as well as the traffic strain. Finding a good balance between personal vehicles and public transport is difficult but this task aims to aid with that, by simulating public transport as well. The product should allow the user to choose the how many people travel by public transport, and seeing how it affects the simulation.

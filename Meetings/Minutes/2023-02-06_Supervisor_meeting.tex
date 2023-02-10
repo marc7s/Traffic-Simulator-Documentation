@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{../../preamble}
+\usepackage{minutes_preamble}
+\usepackage{fancyhdr}
+
+
+%%%%% Update this each meeting %%%%%
+\newcommand{\meetingdate}{2023-02-06}
+\newcommand{\meetingtime}{15:30}
+\newcommand{\meetingplace}{Online, Discord}
+\newcommand{\meetingname}{Supervisor meeting}
+\newcommand{\secretary}{\martin}
+\newcommand{\adjuster}{\hannes}
+\newcommand{\attendees}{\members}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+  
+\begin{document}
+    %!!!!! Do not touch !!!!!%
+    \begin{titlepage}
+        \settitle{\meetingname}
+        \date{\meetingdate}
+        \maketitle
+        
+        \thispagestyle{first}
+        
+        \timeanddate{\meetingdate \space \meetingtime}
+        \place{\meetingplace}
+        \called{\members}
+        \attended{\attendees}
+    \end{titlepage}
+    \newpage
+    \pagestyle{fancy}
+    %!!!!!!!!!!!!!!!!!!!!!!!!%
+
+    %%%%% Meeting protocol %%%%%
+    \section{Opening}
+
+    \section{Approval of previous minutes}
+        \approve{\hannes}
+
+    \section{Notes}
+        \begin{itemize}
+            \item Always close Unity before a commit.
+        \end{itemize}
+
+    \section{Discussion}
+        The meeting started with going through our progress since last and how we are planning to move forwards.
+        \\\\
+        Discussion about organization account for buying assets.
+        \\\\
+        Problems with road architect needs to be researched.
+
+    \section{Decisions}
+
+        \begin{itemize}
+            \item Decisions regarding the use of road architect will be taken on Wednesday the 8th of October (Additional meeting).
+            \item 
+        \end{itemize}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

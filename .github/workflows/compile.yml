@@ -17,7 +17,7 @@ jobs:
             Notes/Notes.tex
           latexmk_shell_escape: true
           work_in_root_file_dir: true
-          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode"
+          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode -auxdir=../"
       
       - name: Compile minutes
         uses: xu-cheng/latex-action@v2

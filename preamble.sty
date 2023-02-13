@@ -3,7 +3,6 @@
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[colorlinks=true]{hyperref}
 \usepackage{csquotes}
 \usepackage{fancyhdr}
 \usepackage[parfill]{parskip}
@@ -14,12 +13,35 @@
 \newcommand*{\fullref}[1]{\hyperref[{#1}]{\ref*{#1} \nameref*{#1}}}
 
 % Authors
-\newcommand{\martin}{Martin Blom}
-\newcommand{\felix}{Felix Jönsson}
-\newcommand{\hannes}{Hannes Kaulio}
-\newcommand{\arvid}{Arvid Nyberg}
-\newcommand{\marcus}{Marcus Schagerberg}
-\newcommand{\jakob}{Jakob Windt}
+\newcommand{\martinFN}{Martin}
+\newcommand{\martinLN}{Blom}
+\newcommand{\martin}{\martinFN{} \martinLN{}}
+\newcommand{\MARTIN}{\MakeUppercase{\martin}}
+
+\newcommand{\felixFN}{Felix}
+\newcommand{\felixLN}{Jönsson}
+\newcommand{\felix}{\felixFN{} \felixLN{}}
+\newcommand{\FELIX}{\MakeUppercase{\felix}}
+
+\newcommand{\hannesFN}{Hannes}
+\newcommand{\hannesLN}{Kaulio}
+\newcommand{\hannes}{\hannesFN{} \hannesLN{}}
+\newcommand{\HANNES}{\MakeUppercase{\hannes}}
+
+\newcommand{\arvidFN}{Arvid}
+\newcommand{\arvidLN}{Nyberg}
+\newcommand{\arvid}{\arvidFN{} \arvidLN{}}
+\newcommand{\ARVID}{\MakeUppercase{\arvid}}
+
+\newcommand{\marcusFN}{Marcus}
+\newcommand{\marcusLN}{Schagerberg}
+\newcommand{\marcus}{\marcusFN{} \marcusLN{}}
+\newcommand{\MARCUS}{\MakeUppercase{\marcus}}
+
+\newcommand{\jakobFN}{Jakob}
+\newcommand{\jakobLN}{Windt}
+\newcommand{\jakob}{\jakobFN{} \jakobLN{}}
+\newcommand{\JAKOB}{\MakeUppercase{\jakob}}
 
 \newcommand{\groupnumber}{68}
 \newcommand{\group}{Group \groupnumber}
@@ -58,7 +80,16 @@
 \renewcommand{\footrulewidth}{0pt}
 
 % Members
-\newcommand{\members}{\martin \and \felix \and \hannes \and \arvid \and \marcus \and \jakob}
+\newcommand{\originalmembers}{\martin \and \felix \and \hannes \and \arvid \and \marcus \and \jakob}
+\newcommand{\members}{\martin \and \felix \and \hannes \and \marcus \and \jakob}
 
 % Authors
+\newcommand{\originalauthors}{\author{\originalmembers}}
 \newcommand{\allauthors}{\author{\members}}
+
+% Supervisor
+\newcommand{\supervisorFN}{Natasha}
+\newcommand{\supervisorLN}{Bianca Mangan}
+\newcommand{\supervisor}{\supervisorFN{} \supervisorLN{}}
+
+\newcommand{\supervisordepartment}{Interaction Design and Software Engineering}

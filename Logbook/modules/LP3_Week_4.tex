@@ -1,0 +1,43 @@
+\subsubsection{Problems}
+    This week Arvid Nyberg dropped out of the project.
+
+    Road Architect was identified as being unstable for some use cases, and bugs were found when trying to construct road networks of certain types.
+
+\subsubsection{Proposed Solutions}
+    The team split the work of Arvid among the members and planned ahead, keeping in mind the reduction in capacity. As he was responsible for the project report, it was decided to share that responsibility among all members.
+
+    In order to combat the instability of Road Architect it was decided to develop a road generator in-house. This will also improve the performance of the simulation as it will be possible to implement more efficient code for the parts that are needed within the project scope.
+
+
+\subsubsection{Reflections}
+    The team has made good progress in creating an MVP, with simple road generation, a functioning car (with "realistic" physics), and four-way intersections.
+
+\subsubsection{Meetings}
+    Weekly supervisor meeting on Monday, and then an additional meeting on Wednesday for the team to discuss how to move away from the Road Architect asset.
+
+\subsubsection{Interim Goals}
+    The goals for next week will be similar to those of last week for some tasks, as we now need to redo the work in our own road generator. Other than that, we will aim to start working on the communication between vehicles and other entities, such as traffic lights.
+
+\subsubsection{Description of Individual Performance}
+    \begin{itemize}
+      \item \performance{\martin}{
+        This week I mostly tested the stability of Road Architect and concluded it was not at a functioning level. This put a stop to most tasks I had assigned myself, so instead I focused on getting our assets bought.
+      }
+      
+      \item \performance{\felix}{
+      Fixed documentation after receiving feedback from supervisor and added text to the sections Problem, Method, and Societal and Ethical aspects. Implemented a camera system, different cameras, and input manager in our application. 
+        
+      }
+      
+      \item \performance{\hannes}{
+        This week i started out rewriting the physics of the car to use the new asset, Edy's car physics. Then i spent the rest of the time on trying to implement intersection creation.
+      }
+      
+      \item \performance{\marcus}{
+        I was focusing on creating a new road generator to use instead of Road Architect. I focused on a simple UI where you can create new road systems and roads, and creating the road meshes with support for multiple lanes.
+      }
+      
+      \item \performance{\jakob}{
+        During this week, I spent most of my time implementing traffic lights. I created a controller that would pair up traffics light to determine what type of intersection they're in. From this information, each individual traffic light would switch it's lighting to match what was asked from the controller. I wanted to implement a way for a car to trigger the traffics light to change colors, but decided to wait until this week, since we're unsure on how to implement.
+      }
+    \end{itemize}

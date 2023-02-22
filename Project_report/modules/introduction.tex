@@ -19,5 +19,12 @@ Subsection & \textbackslash\texttt{subsection\{\emph{Subsection name}\}}\\
 \end{tabular}
 \end{table}
 
-\section{Section} \label{Section_ref}
-\subsection{Subsection}
+\section{Related Work} \label{Section_ref}
+\subsection{Microscopic Traffic Simulations}
+There exists a plethora of different available tools for traffic simulation, which are in turn built upon different underlying models. In Nguyen’s widely cited paper, he classifies the currently available simulations according to the following four categories with regards to their granularity of model: Macroscopic, Microscopic, Mesoscopic, and Nanoscopic. These tools allow researchers to answer complex questions and evaluate different scenarios in both real-time observations and through post-simulation data analysis. \\
+
+Agent-based traffic models position themselves within the Microscopic category and allows for a highly realistic representation of traffic flow, where emergent behaviors such as congestion and bottleneck formation can occur due to the natural occurring interplay of the autonomous agents within the simulation. \\
+
+Simulation of Urban MObility (SUMO) is a widely used and open source microscopic traffic simulation which includes functionality that allows the user to model different transportation agents such as cars, buses, bicycles, and pedestrians in both an urban environment. The simulation is by default deterministic but stochastic processes can be introduced in various ways. \\
+
+The software offers various tools creating networks and editing these through a map editor which can also import and export network data from external sources. In addition to this, SUMO provides the user with features for visualizing the obtained data and analyzing it through various reports and plots. Users can also customize SUMO to accommodate their specific need through the application programming interface (API) and integrate the simulation with other software. \\ 

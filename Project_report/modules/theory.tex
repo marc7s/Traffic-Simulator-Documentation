@@ -1,44 +1,40 @@
 % UPDATED BY MARCUS SCHAGERBERG, 2023
 % CREATED BY WOLFGANG AHRENDT, 2021
 
-In the following sections, examples of a figure, an equation, a table and a source code listing  are shown.
 
-\section{Figure}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.45\linewidth, trim=3cm 11cm 3cm 11cm]{figures/X.pdf}
-        \includegraphics[width=0.45\linewidth, trim=3cm 11cm 3cm 11cm]{figures/Y.pdf}
-        \caption{Surface and contour plots showing the two dimensional function $z(x,y)=\sin(x+y)\cos(2x)$.}
-    \end{figure}
+\section{Unity}
+Unity is a cross-platform game engine used to create both 2D and 3D games. Unity supports a lot of features that speed up development time. 
 
-\section{Equation}
-    \begin{equation}
-        f(t)=\left\{ \begin{array}{ll}
-        1,~~~~ & t< 1 \\
-        t^2 & t\geq 1
-        \end{array}\right.
-    \end{equation}
+% WRITTEN BY HANNES KAULIO, 2023
+\section{Cubic Bézier Curve}
+A cubic Bézier curve is a parametric curve defined by four control points. The four control points define a smooth, continuous curve.
 
-\section{Table}
-    \begin{table}[H]
-        \centering
-        \caption{Values of $f(t)$ for $t=0,1,\dots 5$.}
-        \begin{tabular}{l|llllll} \hline\hline
-            $t$ & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
-            $f(t)$ & 1 & 1 & 4 & 9 & 16 & 25 \\ \hline\hline
-        \end{tabular}
-    \end{table}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.5]{Project_report/figures/bezier-curve.png}
+    \caption{Cubic Bézier curve with control points P\textsubscript{0}, P\textsubscript{1}, P\textsubscript{2} and P\textsubscript{3}}
+\end{figure}
 
+The cubic Bézier curve can be defined by the formula\cite{Cubic-Bézier-Curves}: \[P(t) = (1-t)^3P_0 + 3t(1 - t)^2P_1 + 3t^2(1 - t)P_2 + t^3P_3, 0 \le t \le 1. \]
+Cubic Bézier curves have some basic properties.
+\begin{itemize}
+    \item 1. P\textsubscript{0} and P\textsubscript{3} are on the curve
+    \item 2. The curve is continuous, infinitely differentiable, and the second derivatives are continuous.
+    \item 3. The tangent line to the curve at the point P\textsubscript{0} is the line P\textsubscript{0}P\textsubscript{1}. The tangent to the
+curve at the point P\textsubscript{3} is the line P\textsubscript{2}P\textsubscript{3}.
+    \item 4. Both P\textsubscript{1} and P\textsubscript{2} are on the curve only if the curve is linear.
+\end{itemize}
 
-\section{Source code listing}
-\begin{minted}[frame=single]{matlab}
-    % Generate x- and y-nodes
-    x=linspace(0,1); y=linspace(0,1);
-    
-    % Calculate z=f(x,y)
-    for i=1:length(x)
-     for j=1:length(y)
-      z(i,j)=x(i)+2*y(j);
-     end
-    end
-\end{minted}
+\subsection{Bézier Clipping}
+
+% WRITTEN BY HANNES KAULIO, 2023
+\section{Composite Bézier curve}
+A composite Bézier curve is a spline made out of Bézier curves. The series of bezier curves are joined together end to end with the start point of one curve coinciding with the end point of the other curve.
+
+% WRITTEN BY HANNES KAULIO, 2023
+\section{A* Algorithm}
+A* is an algorithm widely used for path finding and graph traversal \cite{A-Star-Algorithm}. Given a start, and end node in a weighted graph, the algorithm will find the shortest path between the nodes. 
+\section {Mesh Generation}
+
+\section{ABM}
+

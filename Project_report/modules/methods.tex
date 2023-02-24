@@ -6,12 +6,11 @@
 % WRITTEN BY JAKOB WINDT, 2023
 \subsection{Unity}
 
-The simulation tool is built in a well-known game-engine software called Unity. There are a few reason why it was chosen as the development platform for the project instead of a similar game-engine like Unreal Engine. To begin with, C\# is the main programming language supported by Unity, which some of the team members had previous experience with. Furthermore, C\# is a higher level language compared to C++, the main language of Unreal Engine, making it easier for the team members without experience to learn. Because of this, the time it took to begin programming in the early stages of the project was most likely shorter, compared to if Unreal Engine was chosen as the platform.
+The traffic simulation tool is built in a well-known game-engine called Unity. There are a few reason why it was chosen as the development platform for the project instead of a similar game-engine like Unreal Engine. To begin with, C\# is the main programming language supported by Unity, which some of the team members had previous experience with. Furthermore, C\# is a higher level language compared to C++, the main language of Unreal Engine, making it easier for the team members without experience to learn. Because of this, the time it took to begin programming in the early stages of the project was most likely shorter, compared to if Unreal Engine was chosen as the platform.
 \\\\
 Another reason would be that Unity comes with the Unity Asset Store, a marketplace for acquiring creator made assets. This feature is important because, for example, instead of having to create custom models for the vehicles, they could instead be purchased using the given budget. This saves a lot of time, that could be better spent on other parts of the project. One of the more notable purchased assets is Edy's Vehicle Physics that are used to rig vehicle models with realistic physics. Instead of having to develop custom vehicle physics for each model, the team could instead use the asset to quickly configure a model with physics.
 \\\\
-% NOTE: need to find out why
-The final and most important reason is why Unity was chosen, is because of its flexible developing structure. 
+The final reason why Unity was chosen, is because of its flexible developing structure. The level of customization available inside the engine is a lot greater when comparing to Unreal Engine. However, because of this, Unity ends up being more unstable whereas Unreal is far more stable and robust. 
 
 % WRITTEN BY JAKOB WINDT, 2023
 \subsection{GitHub}
@@ -30,34 +29,38 @@ It was decided early on that the projects work flow should follow the SCRUM and 
 
 During the first stage of creating a UI, its important to start with a simple mock-up design. This is what the tool, Balsamiq Wireframes, is used for. The user can quickly design wire frames depicting how the UI will appear during different times in the program. This includes everything from buttons to pop-up menu's that might appear in the simulation tool.
 
+%% WRITTEN BY JAKOB WINDT, 2023
+\subsection{Third-Party Assets}
+
+Built into Unity is their asset store. Instead of creating everything from scratch, the team opted to purchase some assets. An asset can be anything from a 3D model to animation and scripts. The two main assets purchased for the project are Edy's Vehicle Physics and European Road Signs. Edy's Vehicle Physics is a package that includes a tool that allows its user to easily implement realistic vehicle physics into 3d models. This saves a substantial amount of time in the end because there would be no need to create custom physics attribute for each vehicle model. 
+\\\\
+As the name states, the European Road Signs assets include a plethora of street signs, as well as an editor to customize them. Without this asset, there would have been a need to create custom 3D models and texture, which no team member had previous experience with.
+
 \section{Simulation Design and Implementation}
 
 \subsection{ABM}
 
 \subsection{Road Generation}
 
+\subsection{Intersection Generation}
+
 \subsection{City Generation}
 
 % WRITTEN BY HANNES KAULIO, 2023
 \subsection{Navigation}
-The basic navigational responsibility of each agent is to be able to follow the road lanes, avoid colliding into other agents or buildings, follow the traffic rules and being able to navigate to a given position.
+The basic navigational responsibility of each agent is the ability to follow the road lanes, avoid colliding into other agents, follow the traffic rules and being able to navigate to a given position.
 \\\\
-This behavior is achieved by creating a navigation path for each road lane. The path is created as a double linked list. The nodes are insert along the lanes Bézier curve at a constant rate. Each node on the linked list store all information needed to navigate that lane. The position of the node, the agent that is currently on the node and special traffic rules the vehicles need to follow are stored on the node. Traffic signs such as stop sign are represented as a node and the traffic logic can be accessed by the agent when they encounter the node.
+In order to achieve a lane following agent, a navigation path is created for each road lane. The path is created as a double linked list. The nodes are insert along the lanes Bézier curve at a constant rate. Each node in the linked list store all information needed to navigate that lane. The position of the node, the agent that is currently on the node and special traffic rules the vehicles need to follow are stored on the node. Traffic signs such as stop sign are represented as a node and the traffic logic can be accessed by the agent when they encounter the node. 
+\\\\
+The agents steer towards a node that is a certain distance in front of the car. This distance is influenced by the current speed. By steering towards nodes that are in front of the agent, a smooth and reliable steering is achieved. Similarly to steering, breaking is accomplished by looking at nodes at a certain distance ahead. When a node with stop logic is found, the agent will break and stop before that node. This is done by looking for stop nodes at a distance ahead equal to the break distance of the agent. The agents also claim each node they are over so other agents can stop when the node at the break distance is claimed.                                                
 \\\\
 
-% TODO write about snocks
-snocks
-
-
-
-To enable the ability to navigate the roads, a weighted directed graph is created from the road system.
+To enable the ability to navigate the roads, a weighted directed graph is created from the roads.
 The graph nodes are all the road endpoints and intersections. The edges between the nodes are weighted with a cost that is calculated as the distance * the speed limit.
-The agents navigate to a given end node by receiving a path of nodes from the A* algorithm. When an agent drives up to a intersection, the intersections give a new road path to follow given the navigation node the agent is traveling to.
+The agents navigate to a given end node by receiving a path of edges from the A* algorithm. When an agent drives up to a intersection, the intersections give a new road path to follow given the navigation node the agent is traveling to.
 
 
 \section{Graphics}
-
-\subsection{Third-Party Assets}
 
 \subsection{Animations}
 

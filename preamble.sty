@@ -8,6 +8,7 @@
 \usepackage[parfill]{parskip}
 \usepackage{xcolor}
 \usepackage{siunitx}
+\usepackage{algpseudocode}
 
 % Full reference using hyperref. Example output: 3.2 Section name
 \newcommand*{\fullref}[1]{\hyperref[{#1}]{\ref*{#1} \nameref*{#1}}}
@@ -70,6 +71,15 @@
 
 % Convert an `\and` separated list to a comma separated list
 \newcommand{\andtolist}[1]{\def\and{, }#1}
+
+% Add a centered inline image
+\newcommand{\inlineimage}[3]{
+    \begin{figure}[H]
+            \centering
+            \includegraphics[scale=#3]{#1}
+            \caption{#2}
+        \end{figure}
+}
 
 % Appendix
 \let\oldappendix\appendix

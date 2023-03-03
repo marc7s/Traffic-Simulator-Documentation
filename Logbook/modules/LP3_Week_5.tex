@@ -1,11 +1,17 @@
 \subsubsection{Problems}
 
+There are still some minor bugs that need to be fixed with RoadGenerator.
+
+The newly implemented Snoks currently calculate the distance to a node using the birds path. This needs to be changed to the distance between the nodes. 
 
 \subsubsection{Proposed Solutions}
+
+There are no specific proposed solutions other than testing the code, and from there fix the bugs.
 
 
 \subsubsection{Reflections}
 
+The team successfully created a first version of RoadGenerator, our own custom substitute asset for RoadArchitect. With this the team should start to be able to implement parts of the project that are reliant  on the roads. 
 
 \subsubsection{Meetings}
 
@@ -13,26 +19,27 @@ There was only the scheduled Monday meeting with our supervisor.
 
 \subsubsection{Interim Goals}
 
+The goals for next week is to implement a basic version of the cars navigation system. Furthermore, because the first draft of the final report needs to be sent to the other group by Friday, there will have to be some writing done during the week.
 
 \subsubsection{Description of Individual Performance}
     \begin{itemize}
       \item \performance{\martin}{
-        
+        This week I worked a lot on the driving behaviour of the car. Specifically I implemented a braking distance calculation to always make the car stop at the right distance. I also made the steer target dynamic to make the car take corners better. Lastly i did some general tuning of the driving behaviour and implemented a simple fuel consumption model.
       }
       
       \item \performance{\felix}{
-        
+        Added shader and incorporated it into the code. Refactored a lot of how the camera code works and implemented additional camera features. Worked further on GameObject toggle logic.
       }
       
       \item \performance{\hannes}{
-
+        This week I mainly worked on intersection creation.
       }
       
       \item \performance{\marcus}{
-
+        This week I almost exclusively worked on RoadGenerator. I finished the required features to be able to switch from RoadArchitect to RoadGenerator this week. I also reworked the intersection generation and implemented an improved algorithm called Bezier clipping for finding intersecting points between Bezier paths.
       }
       
       \item \performance{\jakob}{
-      This week I spent my time on many smaller parts of the project. First, I designed and created a mockup UI in a program called Balsamiq Wireframes. Furthermore, I rigged a new high quality vehicle model with Edy's Physics which we would use as the vehicle for a user to control. Lastly, I started working on a Terrain editor. I was both able to use scripts to modify the 3D terrain, and also made it so you can import data from OpenStreetMaps to blender, and then from there import it as an asset to Unity. This allows us to take real life 3D map data and display it in Unity.
+      This week I spent my time on many smaller parts of the project. First, I designed and created a mock up UI in a program called Balsamiq Wireframes. Furthermore, I rigged a new high quality vehicle model with Edy's Physics which we would use as the vehicle for a user to control. Lastly, I started working on a Terrain editor. I was both able to use scripts to modify the 3D terrain, and also made it so you can import data from OpenStreetMaps to blender, and then from there import it as an asset to Unity. This allows us to take real life 3D map data and display it in Unity.
       }
     \end{itemize}

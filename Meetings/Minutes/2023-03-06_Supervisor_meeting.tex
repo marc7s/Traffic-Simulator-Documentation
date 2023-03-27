@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{../../preamble}
+\usepackage{minutes_preamble}
+\usepackage{fancyhdr}
+
+
+%%%%% Update this each meeting %%%%%
+\newcommand{\meetingdate}{2023-03-06}
+\newcommand{\meetingtime}{15:30}
+\newcommand{\meetingplace}{Online, Discord}
+\newcommand{\meetingname}{Supervisor meeting}
+\newcommand{\secretary}{\martin}
+\newcommand{\adjuster}{\hannes}
+\newcommand{\attendees}{\martin \and \felix \and \hannes \and \marcus \and \jakob}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+  
+\begin{document}
+    %!!!!! Do not touch !!!!!%
+    \begin{titlepage}
+        \settitle{\meetingname}
+        \date{\meetingdate}
+        \maketitle
+        
+        \thispagestyle{first}
+        
+        \timeanddate{\meetingdate \space \meetingtime}
+        \place{\meetingplace}
+        \called{\members}
+        \attended{\attendees}
+    \end{titlepage}
+    \newpage
+    \pagestyle{fancy}
+    %!!!!!!!!!!!!!!!!!!!!!!!!%
+
+    %%%%% Meeting protocol %%%%%
+    \section{Opening}
+
+    \section{Approval of previous minutes}
+        \approve{\hannes}
+
+    \section{Notes}
+        \begin{itemize}
+            \item Halftime presentation is tomorrow.
+        \end{itemize}
+
+    \section{Discussion}
+        Work is progressing good.
+
+    \section{Decisions}
+
+        \begin{itemize}
+            \item No significant decisions were made during the meeting.
+        \end{itemize}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

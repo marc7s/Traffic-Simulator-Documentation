@@ -1,0 +1,39 @@
+\subsubsection{Problems}
+    When reworking the node generation the rotation of the lane nodes got lost, which meant that the cars spawned incorrectly.
+
+\subsubsection{Proposed Solutions}
+    We readded the rotation on the road nodes instead, and then created a conditional logic for the lane nodes so they use their road node's rotation, but flipped if the lane is in the opposite direction to the road.
+
+
+\subsubsection{Reflections}
+
+
+\subsubsection{Meetings}
+
+    There was only the scheduled Monday meeting with our supervisor.
+
+\subsubsection{Interim Goals}
+
+
+\subsubsection{Description of Individual Performance}
+    \begin{itemize}
+      \item \performance{\martin}{
+        This week I worked on making the cars respond to each other by checking whether a car is already occupying a node or not. I also worked on the midterm presentation as well as a lot of small bugs in the AutoDrive script.
+      }
+      
+      \item \performance{\felix}{
+        Mostly prepared for the half time presentation as well as wrote on the theory and introduction section of the project report.
+      }
+      
+      \item \performance{\hannes}{
+        This week I finished the navigation code and also created the start menu, settings UI. I also started working on connecting the traffic logic to the road nodes and making the cars respond to the traffic lights.
+      }
+      
+      \item \performance{\marcus}{
+        This week I worked on road and lane node generation. I decoupled them from the vertex points to allow them to be generated correctly for intersections, and allow us to control how often we create the nodes. I also worked on giving feedback during the opposition and switched the intersection algorithm to use Bezier Clipping instead.
+      }
+      
+      \item \performance{\jakob}{
+        This week I worked on improving the traffic lights. I made it so when you create an intersection, traffic lights would immediately spawn in their correct locations. This works both for 3-way and 4-way intersections. When an intersection is created, a flow container is spawned. This flow container will keep track of all the intersections signs, traffic lights, and other models. In the flow container, either a traffic light controller or stop sign controller will get spawned. These are used to control their respective models. 
+      }
+    \end{itemize}

@@ -6,11 +6,9 @@
 
 \subsubsection{Reflections}
 
-    
 
 \subsubsection{Meetings}
 
-    There was only the scheduled Monday meeting with our supervisor.
 
 \subsubsection{Interim Goals}
 
@@ -18,22 +16,22 @@
 \subsubsection{Description of Individual Performance}
     \begin{itemize}
       \item \performance{\martin}{
-        This week I worked on reworking a lot of performance logic and fixing bugs that had to do with the driving itself.
+        
       }
       
       \item \performance{\felix}{
-      
+        Mainly bug fixes, refactoring and integrating my code with other code.
       }
       
       \item \performance{\hannes}{
-      This week I fixed a lot of bugs, finished implementing the traffic stopping logic and continued working on connecting roads.
+        This week I mainly refactored code, fixed bugs and worked on adding lamp posts.
       }
       
       \item \performance{\marcus}{
-
+        I mainly worked on yielding in intersections to avoid collisions. The traffic lights help, but collisions can still occur as cars will cross each others paths when turning, so even with traffic lights we need yielding for the cars to behave properly.
       }
       
       \item \performance{\jakob}{
-        As was decided during the weeks sprint planning meeting, the main focus was bug/error fixing. While solving bugs I created a custom editor for our AutoDrive script, which allows the user to update settings live while the simulation is running. This solved a bug which revolved around switching the navigation path/target on/off while the simulation was running. Another bug I started working on was our CarSpawner script which needed to be updated since I wrote it a couple weeks ago. This is because of our additional features of the simulator, that did not exist when I wrote it originally.
+        Most of my time this week was spent on reworking the car spawner. Because of the new features, mainly intersections, that have been added since I wrote the original car spawner, it needed to be fixed. So I rewrote the code and logic, to exclude spawning cars in intersections etc. I also wrote some code to allow cars to be controlled by time events by the time manager, which can later be used to develop busses and other scheduled vehicles.
       }
     \end{itemize}

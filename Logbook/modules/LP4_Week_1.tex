@@ -6,10 +6,10 @@
 
 \subsubsection{Reflections}
 
+    
 
 \subsubsection{Meetings}
-
-    There was only the scheduled Monday meeting with our supervisor.
+    There was the scheduled Monday meeting with our supervisor, as well as the Chalmers Library meeting where we got information about finding information and looking for references.
 
 \subsubsection{Interim Goals}
 
@@ -17,22 +17,22 @@
 \subsubsection{Description of Individual Performance}
     \begin{itemize}
       \item \performance{\martin}{
-        This week I mainly focused on reworking more of the performance system as a whole. This took more time/did not make much improvements than anticipated because there were other unrelated bugs messing with the code.
+        This week I worked on reworking a lot of performance logic and fixing bugs that had to do with the driving itself.
       }
       
       \item \performance{\felix}{
-        Did not contribute to the project this week due to exam week in optional course and the course that runs parallel for IT-students. 
+      Been working on programming features that allows the user to interact with objects in the simulation.
       }
       
       \item \performance{\hannes}{
-        This week I mainly worked on connecting roads to each other. I also finished the visual navigation path and did some traffic light work.
+      This week I fixed a lot of bugs, finished implementing the traffic stopping logic and continued working on connecting roads.
       }
       
       \item \performance{\marcus}{
-        This week I mostly worked on bug fixes and multi lane navigation support. I also added support for multiple independent road systems as well as finished intersection navigation. I also created a demo scene in preparation of the demonstration for our supervisor at our weekly meeting.
+        This week I worked on fixing several bugs, mainly related to how the car drives and navigates. Then I started working on refactoring the AutoDrive script that controls the cars, making it modular and much easier to add new features to and modify the current behaviour. I also attended the meeting at the library, discussing how we can find references and noted the resources we were shown.
       }
       
       \item \performance{\jakob}{
-        I started this week working on fixing some bugs. An example, was that the intersection flow containers that take care if an intersections road signs, would overflow spawn them, resulting in duplicate game objects. Additionally, I implemented a script that handles in game time, as well as a basic schedule for events. The schedule is built using a calendar queue, that prioritizes the events by their respective time stamps.
+        As was decided during the weeks sprint planning meeting, the main focus was bug/error fixing. While solving bugs I created a custom editor for our AutoDrive script, which allows the user to update settings live while the simulation is running. This solved a bug which revolved around switching the navigation path/target on/off while the simulation was running. Another bug I started working on was our CarSpawner script which needed to be updated since I wrote it a couple weeks ago. This is because of our additional features of the simulator, that did not exist when I wrote it originally.
       }
     \end{itemize}

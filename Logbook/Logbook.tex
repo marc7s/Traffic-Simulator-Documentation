@@ -14,6 +14,12 @@
     \newpage
 }
 
+\newcommand{\customlogentry}[3]{
+    \subsection{#3}
+    \input{modules/LP#1_Week_#2}
+    \newpage
+}
+
 \title{Logbook}
 \allauthors
 \date{Spring 2023}
@@ -35,9 +41,11 @@
     \logentry{3}{6}
     \logentry{3}{7}
     \logentry{3}{8}
+    \customlogentry{3}{Exam}{Exam week}
 
 \section{LP4}
     \logentry{4}{1}
+    \logentry{4}{2}
 
 
 \end{document}

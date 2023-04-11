@@ -9,7 +9,7 @@ Unity is a cross-platform game engine used to create both 2D and 3D games. Unity
 
 % Hannes Kaulio
 \section{A* Algorithm}
-    A* is an algorithm widely used for path finding and graph traversal \cite{A-Star-Algorithm}. Given a start, and end node in a weighted graph, the algorithm will find the shortest path between the nodes. 
+    A* is an algorithm widely used for path finding and graph traversal \cite{A-Star-Algorithm}. It is classified as an informed search algorithm since it greedily explores the path finding environment by taking into account both the cost of the path from the starting node to the one that is currently being explored, as well as a heuristic function that estimates the distance between the currently explored node and the goal node. Given a start, and end node in a weighted graph, the algorithm will find the shortest path between the nodes. Together, these two forms an estimate function of the best path towards the goal. Given that A* is complete under the precondition that the search space is finite, and that the branching factor is finite as well, this guarantees that if a path exist, it will be found. Furthermore, if some additional conditions are fulfilled with regards to the heuristic function, A* can be guaranteed to return an optimal path. For this to be the case, the heuristic function needs to admissible or consistent, since a consistent function is also by definition, admissible. 
 
 \input{modules/theory/mesh_generation}
 

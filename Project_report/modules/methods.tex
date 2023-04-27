@@ -9,7 +9,7 @@
 
     Another reason would be that Unity comes with the Unity Asset Store, a marketplace for acquiring creator made assets. This feature is important because, for example, instead of having to create custom models for the vehicles, they could instead be purchased using the given budget. This saves a lot of time, that could be better spent on other parts of the project. One of the more notable purchased assets is Edy's Vehicle Physics that are used to rig vehicle models with realistic physics. Instead of having to develop custom vehicle physics for each model, the team could instead use the asset to quickly configure a model with physics.
 
-    The final reason why Unity was chosen, is because of its flexible developing structure. The level of customization available inside the engine is a lot greater when comparing to Unreal Engine. However, because of this, Unity ends up being more unstable whereas Unreal is far more stable and robust. 
+    The final reason why Unity was chosen, is because of its flexible developing structure. The level of customization available inside the engine is a lot greater when comparing to Unreal Engine. However, because of this, Unity ends up being more unstable whereas Unreal is far more stable and robust.
 
 % WRITTEN BY JAKOB WINDT, 2023
 \subsection{GitHub}
@@ -53,9 +53,18 @@
 
     \inlineimage{figures/method/road_generation/lane_nodes.png}{Visual representation of RoadNodes(Red) and LaneNodes(Green)}{0.5}
 
-\subsection{Intersection Generation}
 
-\subsection{Navigation in intersections}
+% WRITTEN BY MARCUS SCHAGERBERG, 2023
+\subsection{Vehicle Driving Implementation}
+    In order for the vehicles to navigate the road systems, a script had to be written to control them and allow them to follow roads. The vehicles rely on the previously mentioned generated LaneNodes to follow the roads as they curve. The LaneNodes contain information to allow for passive vehicle communication. This is to improve performance, as vehicles otherwise continuously would have to look for other vehicles nearby, searching in a 3D space for each other each frame which is costly. Instead, the LaneNodes allow the vehicles to store some information that can then be read by the other vehicles. Each frame, every vehicle assigns itself to all the LaneNodes it is currently above, thereby letting other vehicles know which LaneNodes are currently occupied. This is then used in order to make the vehicles brake for occupied nodes, therefore preventing vehicles from crashing into each other. As a consequence, this also implements behaviours such as vehicles queuing up behind each other when the first vehicle has stopped.
+
+    With a few simple additions to the logic, such as the LaneNodes also containing information about any traffic lights or traffic signs placed at that location, this allows the vehicles to stop for red lights or stop signs. This fairly simple logical implementation allows for non-colliding traffic in isolated roads, however collisions can still occur in intersections between roads. This is a complex problem with several solutions. The implementation in this project is focused around performance and creating flows mimicking real life driving.
+
+    For this implementation, two new concepts have to be introduced. Both are related to yielding. The first is yielding for blocking nodes, and the second is yielding for crossing nodes. Yielding for blocking nodes means that the vehicles will yield, i.e. stop and wait, for any vehicles currently on any nodes in the way of the path the vehicle is trying to take. This means the vehicles will avoid any traffic inside the intersections, however as vehicles are travelling towards each other in an intersection this is not enough as they will notice each other too late. This leads into the second concept, yielding for crossing nodes. Upon entering an intersection, each vehicle will also check all nodes of any crossing paths, looking as far back as required to ensure that no other vehicles will arrive at the intersecting points before the vehicle itself. This means that vehicles will stop for other vehicles heading into the intersection on any crossing paths that are close enough to interfere.
+
+    Both yielding for blocking as well as yielding for crossing nodes is dependent on the path the vehicle is trying to take, and therefore have to be calculated with the context in mind. For example, if the vehicle is travelling straight across an intersection with traffic lights it does not need to yield for any crossing paths, as all crossing paths will be those required to yield. The same goes for the blocking nodes, different paths are in the way and can block depending on the path the vehicle is heading for. To improve performance, all possible paths in the intersections are precalculated. During that time, all blocking and crossing paths are also precalculated for each path. This means that once the vehicle tries to follow its path in the intersection, it will already have the information related to which nodes it needs to check in order to navigate the intersection safely.
+
+    As the vehicles are thought of as individual agents and programmed through an object oriented approach, implementing these rules for every vehicle means that traffic flows will arise and a complex behaviour can be simulated through these individual rules. A popular example of this is the flocking behaviour of birds which can be simulated through only three simple rules, creating a complex behaviour \cite{flocking-behaviour}.
 
 % WRITTEN BY HANNES KAULIO, 2023
 \subsection{City Generation}
@@ -67,7 +76,7 @@
 
     In order to follow the lanes, each agent follow the LaneNodes on the road. The LaneNodes store all the information needed to navigate the road. The position of the node, the agent that is currently on the node and special traffic rules the vehicles need to follow are stored on the node. Traffic signs such as stop sign are represented as a node and the traffic logic can be accessed by the agent when they encounter the node. 
 
-    The agents steer towards a node that is a certain distance in front of the car. This distance is influenced by the current speed. By steering towards nodes that are in front of the agent, a smooth and reliable steering is achieved. Similarly to steering, breaking is accomplished by looking at nodes at a certain distance ahead. When a node with stop logic is found, the agent will break and stop before that node. This is done by looking for stop nodes at a distance ahead equal to the break distance of the agent. The agents also claim each node they are over so other agents can stop when the node at the break distance is claimed.                                          
+    The agents steer towards a node that is a certain distance in front of the car. This distance is influenced by the current speed. By steering towards nodes that are in front of the agent, a smooth and reliable steering is achieved. Similarly to steering, braking is accomplished by looking at nodes at a certain distance ahead. When a node with stop logic is found, the agent will break and stop before that node. This is done by looking for stop nodes at a distance ahead equal to the brake distance of the agent. The agents also claim each node they are over so other agents can stop when the node at the break distance is claimed.                                          
 
     To enable the ability to navigate the roads, a weighted directed graph is created from the roads. The graph nodes are all the road endpoints and intersections and POIs. The edges between the nodes are weighted with a cost that is calculated as the distance * the speed limit. The agents navigate to a given end node by receiving a path of edges from the A* algorithm. When an agent doesn't have an active navigation path, it will be assigned path that will lead it to a given destination. The agent maps out the path and saves instructions for were to turn in each intersection that is passed when navigating to the destination.
     \inlineimage{figures/method/road_generation/navigation_graph.png}{Visual representation of a navigation graph}{0.5}
@@ -93,14 +102,6 @@
 
     Furthermore, since the simulation is in 3d, the details of the vehicle models had to be accounted for. A 3d model is created with vertices, which are points in a 3d dimensional space. Three of these points are used to construct a triangle, and the triangles in turn build the model. The amount of triangles in a model determines the overall detail of said model. To improve the performance of the simulation, the models that were chosen most contain a low count of triangle, usually less than 20,000. 
 
-    For the road network, % TODO
-
-\section{Graphics}
-
-\subsection{Animations}
-
-\subsection{Environment Materials and Textures}
-
 
 \section{User Interface}
 
@@ -110,9 +111,11 @@
 
     The start menu contains three buttons, one to start the simulation, one to enter the settings menu, and one to exit the program. The settings menu allows the user to change the volume, quality mode, enable a fps counter, and enter full screen. 
 
-    The overlay that is visible while the simulation runs is what allows the user to interact with the simulation itself. There are two main types of buttons: the camera buttons and the menu buttons. %% TODO
+    The overlay that is visible while the simulation runs is what allows the user to interact with the simulation itself. There are two main types of buttons: the camera buttons and the menu buttons. As the name suggests, the camera buttons are used to control the users point of view. The default point of view in the simulation is isometric. An isometric point of view is an angled top-down view that is commonly used in video games to produce a 3d like effect. The other two buttons allows the user to enter first and third person view for the selected vehicle on the road. The three menu buttons are used to open up their respective menu's. These menu's include the individual vehicle statistics, simulation statistics, and the world settings.
 
 \subsection{Statistics}
+
+    As mentioned previously, there are two separate UI menu's: the individual vehicle statistics and the simulation statistics. 
 
 
 % WRITTEN BY MARTIN BLOM, 2023

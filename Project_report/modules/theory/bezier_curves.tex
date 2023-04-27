@@ -4,6 +4,8 @@
 
 % Marcus Schagerberg
 \section{Bézier curves}
+    In order to get an understanding of the math behind Bézier curves it is recommended to use an interactive tool while reading the following section, of which there are plenty on the internet. This gives a visual representation of the mathematics and helps understanding the following chapters. One of these tools is this playground \cite{bezier-playground}.
+
     A Bézier curve is a parametric curve between two points, that curves according to a set of intermediate points. The points are called control points, where the first and last point are the endpoints of the curve. A linear Bézier curve only has two points, which means that it is a line between the points. It is defined by the following function:
 
     $$
@@ -61,6 +63,7 @@
             \item Both \p{1} and \p{2} lay on the curve only if the curve is linear.
             \item A Bézier curve is contained within the convex hull of the control points. For the application in Unity, this means that a Bézier curve is completely contained within the bounding box created by its control points.
         \end{enumerate}
+
 
     % Marcus Schagerberg
     \subsection{De Casteljau's algorithm}

@@ -17,6 +17,24 @@
 \usepackage{xcolor}
 \usepackage{siunitx}
 
+\usepackage{listings}
+\lstdefinestyle{csharp}{
+  language=[Sharp]C,
+  frame=single,
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  escapeinside={(*@}{@*)},
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!40!black},
+  stringstyle=\color{red!60!black}
+}
+\usepackage{caption}
+
+
 % Add fancyhdr lines
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
@@ -70,7 +88,8 @@
 \setcounter{page}{1}
 % Arabic numbering starting from 1 (one)
 \pagenumbering{arabic}
-\setlength{\parskip}{0pt plus 1pt}
+% Set the vertical distance between paragraphs
+\setlength{\parskip}{10pt}
 
 % Introduction
 \chapter{Introduction}
@@ -105,13 +124,8 @@
     % Capitalized roman numbering starting from I (one)
     \pagenumbering{Roman}
     \chapter{Appendix 1}
-        \begin{figure}[H]
-            \centering
-            \includegraphics[scale=0.2]{appendix/Unity.jpg}
-            \caption{Unity logo}
-            \label{fig:unity}
-        \end{figure}
-
+        This is where we will place appendix 1
+    
     \chapter{Appendix 2}
         This is where we will place appendix 2
 \end{appendices}

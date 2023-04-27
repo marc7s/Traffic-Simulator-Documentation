@@ -1,0 +1,23 @@
+% Hannes Kaulio + Felix 
+\section{A* Algorithm}
+    A* is an algorithm widely used for pathfinding and graph traversal \cite{A-Star-Algorithm}. Peter Hart, Nils Nilsson, and Bertram Raphael first presented the algorithm in 1968 as part of a project focused on constructing a mobile robot capable of autonomously devising its actions. It is classified as an informed search algorithm since it greedily explores the pathfinding environment by taking into account both the cost of the path from the starting node to the one that is currently being explored, as well as a heuristic function that estimates the distance between the currently explored node and the goal node. Given a start and end node in a weighted graph, the algorithm will find the shortest path between the nodes. Together, these two form an estimate function of the best path towards the goal. A* is complete under the precondition that the search space is finite, and the branching factor is also finite, which guarantees that if a path exists, it will be found. Furthermore, if some additional conditions are fulfilled with regards to the heuristic function, A* can be guaranteed to return an optimal path. For this to be the case, the heuristic function needs to be admissible or consistent, since a consistent function is also, by definition, admissible.
+    
+    In order to implement the A* algorithm, an open and closed set of nodes is utilized, as well as a few essential variables and functions. These are the key elements used in the algorithm:
+
+    \begin{itemize}
+        \item Start node $s$: The initial position from which the search begins.
+        \item Current node $n$: The node being evaluated during the search process.
+        \item Target set $T$: Contains one or more goal nodes that the algorithm is trying to reach.
+        \item Total estimated cost function $f(n)$: The sum of the cost from the start node to node $n$ (denoted by $g(n)$) and the heuristic estimate of the cost from the node $n$ to the target node (denoted by $h(n)$).
+    \end{itemize}
+
+    With these definitions in place, the A* algorithm can be described using the following steps:
+
+    \begin{enumerate}
+        \item Label the start node $s$ as "open" and compute $f(s)$.
+        \item Choose the open node $n$ with the smallest `$f$` value. Break ties randomly, but always prioritize nodes in the target set $T$.
+        \item If $n$ is in $T$, label $n$ as "closed" and conclude the algorithm.
+        \item Otherwise, mark $n$ as closed and generate all adjacent nodes by exploring the neighboring nodes that can be reached from $n$ in the graph. Compute $f$ for each adjacent node of $n$ and label each adjacent node not already marked closed as "open". If a closed node $n_i$ is an adjacent node of $n$ and its current $f(n_{i})$ is smaller than its previous $f$ value when it was marked closed, relabel it as "open". Return to Step 2.
+    \end{enumerate}
+
+% LÄGG TILL REFERENCE TILL ORGINAL PAPER:ET FÖR ALGORITHM STEGEN 

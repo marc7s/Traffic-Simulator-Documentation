@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{../../preamble}
+\usepackage{minutes_preamble}
+\usepackage{fancyhdr}
+
+
+%%%%% Update this each meeting %%%%%
+\newcommand{\meetingdate}{2023-04-24}
+\newcommand{\meetingtime}{15:30}
+\newcommand{\meetingplace}{Online, Discord}
+\newcommand{\meetingname}{Supervisor meeting}
+\newcommand{\secretary}{\martin}
+\newcommand{\adjuster}{\hannes}
+\newcommand{\attendees}{\martin \and \felix \and \hannes \and \marcus \and \jakob}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+  
+\begin{document}
+    %!!!!! Do not touch !!!!!%
+    \begin{titlepage}
+        \settitle{\meetingname}
+        \date{\meetingdate}
+        \maketitle
+        
+        \thispagestyle{first}
+        
+        \timeanddate{\meetingdate \space \meetingtime}
+        \place{\meetingplace}
+        \called{\members}
+        \attended{\martin \and \hannes \and \marcus \and \jakob}
+    \end{titlepage}
+    \newpage
+    \pagestyle{fancy}
+    %!!!!!!!!!!!!!!!!!!!!!!!!%
+
+    %%%%% Meeting protocol %%%%%
+    \section{Opening}
+
+    \section{Approval of previous minutes}
+        \approve{\hannes}
+
+    \section{Notes}
+        \begin{itemize}
+            \item Hand in for first draft of final report the 27th of April.
+        \end{itemize}
+
+    \section{Discussion}
+        Felix not present due to course clash.
+
+    \section{Decisions}
+
+        \begin{itemize}
+            \item No significant decisions were made during the meeting.
+        \end{itemize}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

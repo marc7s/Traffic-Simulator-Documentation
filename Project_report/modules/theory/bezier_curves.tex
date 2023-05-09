@@ -4,15 +4,17 @@
 
 % Marcus Schagerberg
 \section{Bézier curves}
-    In order to get an understanding of the math behind Bézier curves it is recommended to use an interactive tool while reading the following section, of which there are plenty on the internet. This gives a visual representation of the mathematics and helps understanding the following chapters. One of these tools is this playground \cite{bezier-playground}.
+    The project requires the creation of roads, which follow paths. These paths need to be represented somehow. A type of representation is through a mathematical definition that describes the path. This allows it to be graphically drawn by the computer as well as for calculations to be made in order to find points along the path. A common path representation is as a Bézier curve, which is useful in the project in defining the roads and enabling editing of their paths.
 
-    A Bézier curve is a parametric curve between two points, that curves according to a set of intermediate points. The points are called control points, where the first and last point are the endpoints of the curve. A linear Bézier curve only has two points, which means that it is a line between the points. It is defined by the following function:
+    To receive a clearer understanding of the math behind Bézier curves it is recommended to use an interactive tool while reading the following section. This gives a visual representation of the mathematics and helps understanding the following chapters. One of these tools is the Bezier Playground \cite{bezier-playground}.
+
+    A Bézier curve is a parametric curve between two points, that curves according to a set of intermediate points \cite{bezier-curves}. The points are called control points, where the first and last point are the endpoints of the curve. A linear Bézier curve only has two points, which means that it is a line between the points. It is defined by the following function:
 
     $$
         P(t) = P_0 + t(P_1 - P_0) \timeconstraint
     $$
 
-    Note that $P_1 - P_0$ is the vector starting in $P_0$ and ending in $P_1$. The parameter $t$ is the ratio along the line, with $t = 0$ and $t = 1$ marking the endpoints. This is what is known as linear interpolation in mathematics. A linear Bézier curve is therefore simply a linear interpolation between the points $P_0$ and $P_1$. Let's define this as $P_0 \lerp P_1$. A visual representation can be found below.
+    Note that $P_1 - P_0$ is the vector starting in $P_0$ and ending in $P_1$. The parameter $t$ is the ratio along the line, with $t = 0$ and $t = 1$ marking the endpoints. This is what is known as linear interpolation in mathematics. A linear Bézier curve is therefore simply a linear interpolation between the points $P_0$ and $P_1$. Let's define this as $P_0 \lerp P_1$. A visual representation can be found in figure \ref{fig:linear-interpolation}.
 
     \begin{figure}[H]
         \begin{tabular}{cc}
@@ -20,6 +22,7 @@
             \includegraphics[width=0.48\linewidth]{figures/theory/bezier_curves/linear_interpolation2.png} \\
         \end{tabular}
         \caption{A linear interpolation for two values of t}
+        \label{fig:linear-interpolation}
     \end{figure}
     
     Expanding on this, a quadratic Bézier curve consists of two linear interpolations:
@@ -29,7 +32,7 @@
     
     It is then defined as the linear interpolation between these points, i.e $ A \lerp B $. All linear interpolations in this case depend on the same $t$, which is what creates the curvature of the Bézier curves.
 
-    Since a quadratic Bézier curve has three points, it will have two endpoints as well as an additonal control point between them. By moving the control point, the shape of the Bézier curve can be altered. This is presented with the following examples, the first three of which have static endpoints demonstrating how the middle control point can be used to form the curve. The final example eludes to the fact that the control points can be placed anywhere without the requirement of any order.
+    Since a quadratic Bézier curve has three points, it will have two endpoints as well as an additonal control point between them. By moving the control point, the shape of the Bézier curve can be altered. This is presented with the examples in figure \ref{fig:bezier-curve-examples}, the first three of which have static endpoints demonstrating how the middle control point can be used to form the curve. The final example eludes to the fact that the control points can be placed anywhere without the requirement of any order.
 
     \begin{figure}[H]
         \begin{tabular}{cc}
@@ -40,6 +43,7 @@
             \includegraphics[width=0.5\linewidth]{figures/theory/bezier_curves/quadratic4.png}
         \end{tabular}
         \caption{Four examples of quadratic Bézier curves}
+        \label{fig:bezier-curve-examples}
     \end{figure}
 
     
@@ -67,7 +71,7 @@
 
     % Marcus Schagerberg
     \subsection{De Casteljau's algorithm}
-        In 1959 the french mathematician Paul de Casteljau constructed an algorithm for dividing a Bézier curve into two. The union of these Bézier segments is equivalent to the original curve.
+        In 1959 the french mathematician Paul de Casteljau constructed an algorithm for dividing a Bézier curve into two. The union of these Bézier segments is equivalent to the original curve. With this algorithm it is possible to split Bézier curves into sections and is a core part of the Bézier Clipping algorithm.
     
     % Marcus Schagerberg
     \subsection{Bézier Clipping}
@@ -102,4 +106,4 @@
 
     % Hannes Kaulio and Marcus Schagerberg
     \subsection{Composite Bézier curve}
-        A composite Bézier curve is a spline made out of Bézier curves. The series of Bézier curves are joined together end to end with the start point of one curve coinciding with the end point of the other curve. This is used in the projects as it allows for chaining of cubic Bézier path segments creating a spline. This is used for creating the roads and railroads.
+        A composite Bézier curve is a spline made out of Bézier curves. The series of Bézier curves are joined together end to end with the start point of one curve coinciding with the end point of the other curve. This is used in the project as it allows for chaining of cubic Bézier path segments creating a spline.

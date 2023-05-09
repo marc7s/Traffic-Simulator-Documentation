@@ -7,7 +7,14 @@
 
     \subsection{OSM}
 
-    \subsection{Intersection Types}
+    % WRITTEN BY JAKOB WINDT, 2023
+    \subsection{Support Road and Intersection Types}
+
+    For intersections, the simulation only has support for three and four way intersections. These intersections can be created with either one-way or regular two lane roads, or a mix of both. In reality, there are other intersection types such as the roundabout that there currently is no support for. To implement this, the vehicles needs to be able to complete the correct type of yield that exists in intersections.
+
+    Furthermore, when designing large road networks, especially outside cities, highways are critical. Highways are currently not supported in the simulation because of a few different reason. To begin, there is functionality for multiple lanes when creating roads with the road generator in Unity. However, the vehicles are not able to switch lanes in the simulation, making multiple lanes unusable. Since lane switching isn't supported, vehicles don't have the ability to overtake each other which usually happens on highway. There are also no highway entrances and exits in the simulation, which needs to be implemented for highway roads to function correctly.
+
+    
 
     \subsection{Performance Optimization}
 
@@ -19,6 +26,19 @@
 \section{Additional Knowledge}
 
 \section{User Testing Feedback}
+    % WRITTEN BY MARCUS SCHAGERBERG, 2023
+    \subsection{Evaluation of the software}
+        According to the user feedback, we found our tool to be intuitive and easy to use.
+
+    % WRITTEN BY MARCUS SCHAGERBERG, 2023
+    \subsection{Changes made based on the testing feedback}
+        In order to eliminate the ambiguity between the two statistics related buttons, it was decided to remove one of them and instead dynamically change the content based on the context. It was changed so that if the statistics panel is open while a vehicle is selected, it displays the individual statistics related to that vehicle. Otherwise, it displays the overall statistics for the entire road network. This solution was proposed to the tester and the response was that it would be a good solution.
+
+        As some users felt that it was a bit cumbersome to navigate around, the camera controls was changed so that the keyboard is used for movement around the plane, and the mouse to rotate and pitch the camera. This change made the tool in line with most games as well as other software such as CAD programs, improving the accessibility and intuitiveness as users can recognise the controls from previous experiences. The movement speed was also changed to depend on the zoom level, so that the camera moves slower when zoomed in on vehicles or intersections while being faster when positioned higher above the ground. This allows the user to quickly move between areas of the network while still being able to have fine control over the movement when zoomed in.
+
+        A button was also added to toggle the colour coding feature that can colour the roads based on current statistics, such as congestion levels or emissions. This is helpful for visualising the current performance of the road network and to quickly identify problematic areas when viewing the system from a macro perspective.
+    
+    
 
 \section{Development Process}
     % How well the workflow worked

@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{../../preamble}
+\usepackage{minutes_preamble}
+\usepackage{fancyhdr}
+
+
+%%%%% Update this each meeting %%%%%
+\newcommand{\meetingdate}{2023-05-02}
+\newcommand{\meetingtime}{15:30}
+\newcommand{\meetingplace}{Online, Discord}
+\newcommand{\meetingname}{Supervisor meeting}
+\newcommand{\secretary}{\martin}
+\newcommand{\adjuster}{\hannes}
+\newcommand{\attendees}{\martin \and \felix \and \hannes \and \marcus \and \jakob}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+  
+\begin{document}
+    %!!!!! Do not touch !!!!!%
+    \begin{titlepage}
+        \settitle{\meetingname}
+        \date{\meetingdate}
+        \maketitle
+        
+        \thispagestyle{first}
+        
+        \timeanddate{\meetingdate \space \meetingtime}
+        \place{\meetingplace}
+        \called{\members}
+        \attended{\members}
+    \end{titlepage}
+    \newpage
+    \pagestyle{fancy}
+    %!!!!!!!!!!!!!!!!!!!!!!!!%
+
+    %%%%% Meeting protocol %%%%%
+    \section{Opening}
+
+    \section{Approval of previous minutes}
+        \approve{\hannes}
+
+    \section{Notes}
+        \begin{itemize}
+            \item Most notable things to fix in report is related to citing/referencing.
+            \item 15th of May second individual assessments.
+            \item 2nd of June last individual assessments.
+            \item Double check opposition/final presentation.
+            \item 17th of May submission of "film/movie".
+        \end{itemize}
+
+    \section{Discussion}
+        Supervisor soon finished with reading report and will give feedback soon.
+
+    \section{Decisions}
+
+        \begin{itemize}
+            \item No significant decisions were made during the meeting.
+        \end{itemize}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

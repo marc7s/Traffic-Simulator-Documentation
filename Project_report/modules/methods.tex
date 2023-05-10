@@ -2,8 +2,7 @@
 % CREATED BY WOLFGANG AHRENDT, 2021
 
 \section{Tools}
-
-% Lägg till meta text???
+    This section will review the software tools that significantly influenced our development process, and the motivation behind choosing these tools. Central to our discussion is the choice of Unity as our primary game engine, over other well-known alternatives such as the Unreal Engine. We will delve into the key factors that influenced this decision, encompassing the team's familiarity with Unity's primary programming language, C\#, the advantageous features of the Unity Asset Store, and the engine's flexibility and customization capacity. Finally, we will provide a brief overview of how we utilized GitHub for efficient version control.
 
 % WRITTEN BY JAKOB WINDT, 2023
 \subsection{Unity}
@@ -14,44 +13,51 @@
     The final reason why Unity was chosen, was due to its flexible developing structure. The level of customization available inside the engine is a lot greater in comparison to Unreal Engine. However, because of this, Unity ends up being more unstable whereas Unreal is far more stable and robust.
 
 % WRITTEN BY JAKOB WINDT, 2023
+% \subsection{Balsamiq Wireframes}
+%    During the first stage of creating a UI, it is important to start with a simple mock-up design. This is what the tool, Balsamiq Wireframes\cite{balsamiq-wireframes}, is used for. The user can quickly design wire frames depicting how the UI will appear during different times in the program. This includes everything from buttons to pop-up menu's that might appear in the simulation tool.
+
+%% WRITTEN BY JAKOB WINDT, 2023
+\subsection{Third-Party Assets}
+    Built into Unity is their asset store. Instead of creating everything from scratch, the team opted to purchase some assets. An asset can be anything from a 3D model to animation and scripts. Multiple assets were purchased throughout the development period of the project. These assets include more impactful ones such as Edy's Vehicle Physics and Bézier Path Creator\cite{bpc}. Edy's Vehicle Physics is a package that includes a tool that allows its user to easily implement realistic vehicle physics into 3d models, while the Bézier Path Creator is a light-weight editor for creating paths in the editor. This saves a substantial amount of time because they removed the need to design custom tools for these tasks.
+
+    % WRITTEN BY JAKOB WINDT, 2023
 \subsection{GitHub}
     A commonly used tool when developing software in larger groups is Git\cite{git}. Git is a free and open-source version control system that allows its users to collaborate in an efficient and easy way. 
 
     GitHub\cite{github} is an online software development platform that utilizes Git to store and track software projects. It allows for users to work in their own separate branches, and later merge those into the main repository. Before a team member can merge their new code to the main repository, the code would have to be reviewed by at least one other team member to ensure that the code was well commented, functional, and that it follows the C\# coding standard.
 
 
-% WRITTEN BY JAKOB WINDT, 2023
-\subsection{Balsamiq Wireframes}
-    During the first stage of creating a UI, it is important to start with a simple mock-up design. This is what the tool, Balsamiq Wireframes\cite{balsamiq-wireframes}, is used for. The user can quickly design wire frames depicting how the UI will appear during different times in the program. This includes everything from buttons to pop-up menu's that might appear in the simulation tool.
-
-%% WRITTEN BY JAKOB WINDT, 2023
-\subsection{Third-Party Assets}
-    Built into Unity is their asset store. Instead of creating everything from scratch, the team opted to purchase some assets. An asset can be anything from a 3D model to animation and scripts. The two main assets purchased for the project are Edy's Vehicle Physics and European Road Signs. Edy's Vehicle Physics is a package that includes a tool that allows its user to easily implement realistic vehicle physics into 3d models. This saves a substantial amount of time because there would be no need to create custom physics attribute for each vehicle model. 
-
-    As the name states, the European Road Signs assets include a plethora of street signs, as well as an editor to customize them. Without this asset, there would have been a need to create custom 3D models and texture, which no team member had previous experience with.
-
 \section{Simulation Design and Implementation}
 
+    This section provides an overview of the development and functionality of the various software components we developed to create a traffic simulation. We delve into the use of composite Bézier curves for realistic road generation, the implementation of Points of Interest (POIs), and how our agents interact with these POIs. In addition, we explain how we employed so-called LaneNodes for vehicles' navigation. Furthermore, we detail how we integrated the previously mentioned A* algorithm for optimized pathfinding and how we utilized OpenStreetMap data to generate authentic cityscapes for the simulation environment.
+
+    % WRITTEN BY HANNES KAULIO, 2023
     \subsection{ABM}
+        The different vehicles are simulated as independent agents. These agents do calculations based on their environment and chooses actions based on them. The environment is the road network with the roads, traffic light, intersections. The agents will check for traffic rules, other agent, traffic lights and intersections and decide were to steer and whether to brake or accelerate. 
 
     % WRITTEN BY HANNES KAULIO, 2023
     \subsection{Road Generation}
-        In order to achieve realistic roads with adequate curves, composite Bézier curves were used. The Bézier control points will shape the road and its characteristics. A number of parameter can be changed in the Bézier path to change the appearance. The position and sharpness of the turn can be modified by changing were the control points are placed in relation to each other. 
+     Composite Besier curves were used in order to achieve a more realistic road creation,  with more adequate curves. A number of parameters can be changed in the Bézier path to change the appearance. The Bézier control points will shape the road and its characteristics. The position and sharpness of the turn can be modified by changing were the control points are placed in relation to each other. 
         \inlineimage{figures/method/road_generation/bezier_path_unity.png}{Composite Bézier path}{0.5}
     
         While the Bézier curves give a good ground level for the road implementation, it is hard to implement and build logic based on it since it is a continuous path. The Bézier logic and its control points was abstracted away with a node implementation placed on top of the Bézier path. A number of nodes called RoadNodes is placed along the Bézier path at a rate dependent on curve of the road. The nodes are all connected the its previous and its next node along the path. The goal of these nodes is to carry enough information to procedurally  build the road mesh as well as carry some logic needed for agents to navigate the environment.
-        \inlineimage{figures/method/road_generation/roadnodes.png}{Visual representation of RoadNodes places along a Composite Bézier path}{0.5}
+        \inlineimagewithlabel{figures/method/road_generation/roadnodes.png}{Visual representation of RoadNodes places along a Composite Bézier path}{0.5}{road-nodes}
     
-        By using the RoadNodes, generating the road mesh is possible. The mesh is procedurally generated by placing vertices at the RoadNode and along its normal line in both direction at a length equal to the width of a lane. If multiple lanes is wanted, vertices can be continually added in each normal direction for the lane amount. In addition to these, vertices are also placed below them to add thickness to the road. Triangles are then drawn between these vertices to create the mesh. To add the road material, sub meshes is created for each lane. The power of procedural generation is the ability to customize the roads different parameters. The width of the lanes, width of the lines, thickness of the road and number of lanes can all be changed for each road.
+        By using the RoadNodes, visualised in figure \ref{fig:road-nodes}, generating the road mesh is possible. The mesh is procedurally generated by placing vertices at the RoadNode and along its normal line in both directions at a length equal to the width of a lane. If multiple lanes is wanted, vertices can be continually added in each normal direction for the lane amount. In addition to these, vertices are also placed below them to add thickness to the road. Triangles are then drawn between these vertices to create the mesh. To add the road material, sub meshes is created for each lane. The power of procedural generation is the ability to customize the roads different parameters. The width of the lanes, width of the lines, thickness of the road and number of lanes can all be changed for each road.
     
         \inlineimage{figures/method/road_generation/road_mesh_generation.png}{The vertices and triangles used to generate the one lane road mesh}{0.5}
     
         \inlineimage{figures/method/road_generation/road.png}{Road generated from its RoadNodes}{0.5}
     
-        While the RoadNodes carry a lot of critical logic, it is lacking logic for driving along the different road lanes. This logic is added with another node that is placed along the road, the LaneNode. LaneNodes are placed at both sides of the normal line of each RoadNode at the middle of the lanes. These nodes are responsible for the road steering as well as notifying other agents if they are currently occupied by any agents.
+        While the RoadNodes carry a lot of critical logic, it is lacking logic for driving along the different road lanes. This logic is added with another node that is placed along the lanes, the LaneNode. LaneNodes are placed at both sides of the normal line of each RoadNode at the middle of the lanes. These nodes are responsible for the road steering as well as notifying other agents if they are currently occupied by any agents.
     
         \inlineimage{figures/method/road_generation/lane_nodes.png}{Visual representation of RoadNodes (Red) and LaneNodes (Green)}{0.5}
 
+    % WRITTEN BY MARCUS SCHAGERBERG, 2023
+    \subsection{Points of Interest} \label{poi}
+        Points of Interest, or POIs for short, defines locations of some value. In the simulation, POIs add places the vehicles can navigate to and interact with. The POIs that have been added are parkings, bus stops, fuel stations and houses. Most of these are self-explanatory, but they add another layer to the simulation. Bus stops can be placed around the road system and added to bus routes which causes buses to follow defined routes, stopping at every bus stop along the way. This is something to consider when designing road networks as well as choosing bus routes in the real world, as they have to follow the same routes which makes buses vulnerable to congestions. To mitigate this, bus lanes, or even dynamic bus lanes, can be added to prioritise public transport \cite{bus-lanes}. By simulating buses using the bus stop POIs, it is possible to identify how well the public transport performs given the circumstances in the simulated road network. It is also possible to compare how changes to the road network affects the public transportation system.
+
+        When the vehicles are almost out of petrol, they will navigate to a fuel station and fill up. With limited access to fuel stations, queues might arise when multiple vehicles need to refuel at the same time. Houses are targets for the vehicles to simulate driving from or to a home, meaning vehicles might gravitate towards residential areas during certain times of the day which could also cause congestion depending on how well the road system can handle it.
 
     % WRITTEN BY MARCUS SCHAGERBERG, 2023
     \subsection{Vehicle Driving Implementation}
@@ -66,21 +72,26 @@
         As the vehicles are thought of as individual agents and programmed through an object oriented approach, implementing these rules for every vehicle means that traffic flows will arise and a complex behaviour can be simulated through these individual rules. A popular example of this is the flocking behaviour of birds which can be simulated through only three simple rules; separation, alignment and cohesion, creating a complex behaviour \cite{flocking-behaviour}.
 
     % WRITTEN BY HANNES KAULIO, 2023
-    \subsection{City Generation}
-        To aid in simulating cities and larger areas, existing real life locations are generated from OSM data. The OSM data specify the latitude and longitude of every road and its path. Real life building data is also used to generate a representation of the buildings. The OSM file is parsed and the roads are generated with its specified characteristics. The speed limit, road type and if the road is lit is all considered when generating the road.  
+    \subsection{Navigation}
+        % FIX SPACE
+        In addition to being able to follow the roads and handle intersections, the vehicles need to be able to navigate the road system. The road system can be thought of as a graph, with the roads as edges and each intersection and POI as a node, as seen in figure \ref{fig:navigation-graph}. After generating this graph from the road system, it is then possible to find the shortest paths between two points in the road system. In this project an implementation of the A* algorithm is used for this purpose.
+
+        \inlineimagewithlabel{figures/method/road_generation/navigation_graph.png}{Visual representation of a navigation graph}{0.4}{navigation-graph}
+    
+        The graph representation of the road systems is a weighted directed graph. The edges, which correspond to the roads, are weighted with a cost that is calculated as the distance multiplied by the speed limit. This is an estimate of the time it would take to travel that edge which lets the algorithm find the fastest path. The graph is directed since one way roads are supported. This limits the possible paths the agents can take. The agents navigate to a given end node by receiving a path of edges from the A* algorithm. When the agent reaches its target, it will receive a new path and subsequently navigate to it.
+        
+        Multi target navigation is also possible. By receiving a number of destinations, the agent will travel to them in the given order. This is achieved by using the A* algorithm to find the shortest path to the first target, then it is repeatedly calculating the shortest path from the last target to the next. This is for example used by the buses to map out their entire bus route.
+        
 
     % WRITTEN BY HANNES KAULIO, 2023
-    \subsection{Navigation}
-        The basic navigational responsibility of each agent is the ability to follow the road lanes, avoid colliding into other agents, follow the traffic rules and being able to navigate to a given position.
-    
-        In order to follow the lanes, each agent follow the LaneNodes on the road. The LaneNodes store all the information needed to navigate the road. The position of the node, the agent that is currently on the node and special traffic rules the vehicles need to follow are stored on the node. Traffic signs such as stop sign are represented as a node and the traffic logic can be accessed by the agent when they encounter the node. 
-    
-        The agents steer towards a node that is a certain distance in front of the car. This distance is influenced by the current speed. By steering towards nodes that are in front of the agent, a smooth and reliable steering is achieved. Similarly to steering, braking is accomplished by looking at nodes at a certain distance ahead. When a node with stop logic is found, the agent will break and stop before that node. This is done by looking for stop nodes at a distance ahead equal to the brake distance of the agent. The agents also claim each node they are over so other agents can stop when the node at the break distance is claimed.                                          
-    
-        To enable the ability to navigate the roads, a weighted directed graph is created from the roads. The graph nodes are all the road endpoints and intersections and POIs. The edges between the nodes are weighted with a cost that is calculated as the distance * the speed limit. The agents navigate to a given end node by receiving a path of edges from the A* algorithm. When an agent doesn't have an active navigation path, it will be assigned path that will lead it to a given destination. The agent maps out the path and saves instructions for were to turn in each intersection that is passed when navigating to the destination.
-        \inlineimage{figures/method/road_generation/navigation_graph.png}{Visual representation of a navigation graph}{0.5}
+    \subsection{OpenStreetMap integration}
+        To aid in simulating cities and larger areas, existing real life locations are generated from OSM data. An OSM file of an specified area can be downloaded and then used as an input for the simulation. The data in the file specify the latitude and longitude of every road and its characteristics such as the path, speed limit, road name and the amount of lanes. Building, nature data is also available. The simulation tool will then parse the file and generate a to-scale replica of the road network in the given location and its characteristics. To add to the level of realism, the buildings and nature is also generated. This feature allows testing of existing locations without having to build up a replica by hand.
+
+        Furthermore, the POI system is integrated with the OSM tool. The parking loots, bus stops, fuel stations and houses that exist in the given file is simulated as POIs. This allows the agents to exhibit a behavior were they actively travel to POIs and conduct their business. Busses will travel to its bus stops while the cars will travel to parking spots, fuel stations houses.
+
 
 \section{Performance}
+    This section addresses design choices made to optimize the performance of the simulation. Given our goal for the simulation to host a large number of simultaneous agents, this was a critical consideration. We highlight optimization strategies employed to handle performance-intensive aspects of the simulation, such as concurrent active vehicles on the roads and the roads themselves. Performance benchmarks is then presented to give the reader a comparison between different settings. 
 
     % WRITTEN BY JAKOB WINDT, 2023
     \subsection{Quality vs Performance}
@@ -88,18 +99,19 @@
     
         %% Vehicle performance
         While testing the simulation during development, the most noticeable performance cost were the vehicles on the roads. This is because of the Edy's Vehicle Physics asset that simulates real-world physics to each vehicle in the network. To circumvent this issue, a vehicle performance mode was implemented. This performance mode would disable the EVP asset, and instead move the cars by offsetting their individual object transform. As a result, the performance cost of the vehicles would decrease, and allow for more cars in the road network.
-
-
-    \subsection{Performance Benchmarks}
     
     % WRITTEN BY JAKOB WINDT, 2023
     \subsection{Optimization} 
-        When creating software of any kind, it is always important to make sure it is able to run smoothly. To allow the program to run well, optimizations had to be made. There are two areas in the simulation that are costly performance-wise: the vehicles on the roads and the roads themselves. To optimise the vehicles, as mentioned earlier, a performance mode was implemented. This allowed the simulation to skip calculating the physics for each vehicle. 
+        When creating software of any kind, it is always important to make sure it is able to run smoothly. This was achieved through the use of optimizations. There are two areas in the simulation that are costly performance-wise: the vehicles on the roads and the roads themselves. To optimise the vehicles, as mentioned earlier, a performance mode was implemented. This allowed the simulation to halt calculating the physics for each vehicle. 
     
-        Furthermore, since the simulation is in 3d, the details of the vehicle models had to be accounted for. A 3d model is created with vertices, which are points in a 3d dimensional space. Three of these points are used to construct a triangle, and the triangles in turn build the model. The amount of triangles in a model determines the overall detail of said model. To improve the performance of the simulation, the models that were chosen most contain a low count of triangle, usually less than 20,000. 
+        Furthermore, since the simulation is in 3d, the details of the vehicle models had to be accounted for. A 3d model is created with vertices, which are points in a 3d dimensional space. Three of these points are used to construct a triangle, and the triangles in turn build the model. The amount of triangles in a model determines the overall detail of said model. To improve the performance of the simulation, the models that were chosen were at a low count of triangle, usually less than 20,000. 
 
+    \subsection{Performance Benchmarks}
 
 \section{User Interface}
+
+This section will delve into how we implemented our user interface (UI), which serves as the primary point of interaction between the user and the simulation. We focus on its two main elements: the start menu and the run-time overlay, which the user interacts with while the simulation is running. Furthermore, we provide an overview of our approach to presenting statistics gathered from the simulation during run-time.
+    
     %% WRITTEN BY JAKOB WINDT, 2023
     \subsection{Design}
         To allow the user to interact with the simulation, a user interface was made. The UI consists of two main parts: the start menu and the run-time overlay. 
@@ -115,7 +127,6 @@
         The individual vehicle statistics are used to give the user an easy overview of how a singled out car is performing in traffic. It shows statistics such as fuel consumption, average speed, distance traveled and time stuck in traffic. This can be useful to see how changes that generally improve traffic flow could still make the traffic worse for a small group of cars. This is important to take into consideration because it can lead the negatively affected cars to take an unexpected route to try and solve their issues, and at the same time negatively alter the traffic flow for the other cars on the road.
 
         The world settings and simulation statistics window gives the user a good overview of the overall efficiency of traffic flow, with detailed information regarding which groups of vehicles account for the most traffic and CO2 emissions. It also indicates which areas and roads that receive the most traffic and therefore moves at the slowest pace. This is very useful when locating what causes traffic jams and might give insight into possible solutions. Moreover the window is also useful to see how traffic would differ when a certain amount of people choose to take public transport, such as trams or busses instead of driving their own car. Not only will this quickly show the differences of traffic flow but also the improved or worsened CO2 emissions.
-
 
 % WRITTEN BY MARTIN BLOM, 2023
 \section{Workflow}

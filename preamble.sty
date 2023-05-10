@@ -81,6 +81,16 @@
         \end{figure}
 }
 
+% Add a centered inline image
+\newcommand{\inlineimagewithlabel}[4]{
+    \begin{figure}[H]
+            \centering
+            \includegraphics[scale=#3]{#1}
+            \caption{#2}
+            \label{fig:#4}
+        \end{figure}
+}
+
 % Appendix
 \let\oldappendix\appendix
 \renewcommand{\appendix}{\oldappendix\section*{Appendix}\addcontentsline{toc}{section}{Appendix}\renewcommand{\thesubsection}{\Alph{subsection}}}

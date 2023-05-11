@@ -41,11 +41,11 @@ One of the first design patterns introduced in the aforementioned book by the â€
       \centering
       \includegraphics[scale=0.75]{Project_report/figures/theory/design_patterns/observer_uml.png}
       \caption{UML diagram of generic publisher/subscriber-relation implementation.}
-      \label{fig:observer_uml}
+      \label{fig:subscriber-observer-uml}
     \end{figure}
 
 \subsection{Overview of the Observer Pattern in Unity and C\#}
-    Both the C\# programming language and the Unity API includes several features that facilitates the use of the Observer pattern. Most modern languages opt for a method-based implementation of the Observer Pattern, as compared to the class-based implementation as seen in Figure \ref{fig:observer_uml}. The list that follows highlights some of the most prominent components that are used to promote the usage of this pattern:
+    Both the C\# programming language and the Unity API includes several features that facilitates the use of the Observer pattern. Most modern languages opt for a method-based implementation of the Observer Pattern, as compared to the class-based implementation as seen in Figure \ref{fig:subscriber-observer-uml}. The list that follows highlights some of the most prominent components that are used to promote the usage of this pattern:
 
 \begin{itemize}
     \item \textbf{Delegates (C\#)}: Define a type representing a specific user-defined method signature, allowing for a method-based event system\cite{microsoft-csharp-delegates}. This custom type can be realized with any method sharing the same signature as the delegate, enabling a type-safe way of passing methods as arguments. They resemble C++ function pointers but provide object-oriented capabilities by encompassing both a function and its associated object instance.
@@ -69,11 +69,11 @@ One of the first design patterns introduced in the aforementioned book by the â€
 
     By seperating the state logic into a seperate interface, this makes it easy to accommodate for change and extensibility when modifying or adding a new state. This adheres to the Open/Closed principle\footnote{The 'O' in SOLID. Says that a class should be easy to extend without needing to modify any existing code.} as it allows developers to introduce new states without altering the existing state classes or the main class responsible for managing state transitions.
 
-    The pattern is implemented by defining the common State interface, that should be able to handle any state specific requests and transitions. This interface is then realized by concrete states classes that provides their own unique logic and behaviour. To mediate between these states, you then implement a main class, sometimes called the Context class, that holds a reference to the current state and delegates function calls to it. This main class is also responsible for changing the current state based on transition logic defined in the concrete State classes.
+    The pattern is implemented by defining the common State interface, that should be able to handle any state specific requests and transitions. This interface is then realized by concrete states classes that provides their own unique logic and behaviour. To mediate between these states, you then implement a main class, sometimes called the Context class, that holds a reference to the current state and delegates function calls to it. This main class is also responsible for changing the current state based on transition logic defined in the concrete State classes. A UML diagram of a State pattern is shown in figure \ref{fig:state-observer-uml}.
     
     \begin{figure}[H]
       \centering
       \includegraphics[scale=0.75]{Project_report/figures/theory/design_patterns/state_uml.png}
       \caption{UML diagram of generic State pattern implementation.}
-      \label{fig:observer_uml}
+      \label{fig:state-observer-uml}
     \end{figure}

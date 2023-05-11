@@ -1,54 +1,56 @@
 % UPDATED BY MARCUS SCHAGERBERG, 2023
 % CREATED BY WOLFGANG AHRENDT, 2021
 
+% WRITTEN BY JAKOB WINDT & MARTIN BLOM, 2023
+This section will present the tools and methods used throughout the project, and how certain aspects were implemented. Firstly we explain our thought processes on choosing any existing tools and then present any tools that were created in order to aid in the development. Lastly we present the workflow that was used, from the planning to the organization and testing methodology.
+
+% EDITED BY MARTIN BLOM, 2023
 \section{Tools}
-    This section will review the software tools that significantly influenced our development process, and the motivation behind choosing these tools. Central to our discussion is the choice of Unity as our primary game engine, over other well-known alternatives such as the Unreal Engine. We will delve into the key factors that influenced this decision, encompassing the team's familiarity with Unity's primary programming language, C\#, the advantageous features of the Unity Asset Store, and the engine's flexibility and customization capacity. Finally, we will provide a brief overview of how we utilized GitHub for efficient version control.
+    This section will review the software tools that significantly influenced our development process, and the motivation behind choosing these tools. Central to our discussion is the choice of Unity as our primary game engine, over other well-known alternatives such as the Unreal Engine. We will delve into the key factors that influenced this decision, encompassing the team's familiarity with Unity's primary programming language, C\#, the advantageous size of the Unity Asset Store, and the engine's flexibility and customization capacity. Finally, we will provide a brief overview of how we utilized GitHub for efficient version control.
 
-% WRITTEN BY JAKOB WINDT, 2023
-\subsection{Unity}
-    The traffic simulation tool is built in a well-known game-engine called Unity. There are a few reasons why it was chosen as the development platform for the project instead of a similar game-engine like Unreal Engine. To begin with, C\# is the main programming language supported by Unity, which some of the team members had previous experience with. Furthermore, C\# is a higher level language compared to C++, the main language of Unreal Engine, making it easier for the team members without experience to learn. Because of this, the time it took to begin programming in the early stages of the project was most likely shorter, compared to if Unreal Engine was chosen as the platform.
+    % WRITTEN BY JAKOB WINDT, 2023
+    % EDITED BY MARTIN BLOM, 2023
+    \subsection{Unity}
+        The traffic simulation tool is built in a well-known game-engine called Unity. There are a few reasons why it was chosen as the development platform for the project instead of a similar game-engine like Unreal Engine. To begin with, C\# is the main programming language supported by Unity, which some of the team members had previous experience with. Furthermore, C\# is an inherently simpler language compared to C++, the main language of Unreal Engine, making it easier for the team members without experience to learn. Therefore, the time to begin programming on this platform was also achieved in a shorter time frame than what would have been expected had Unreal Engine been chosen as the platform.
 
-    Another reason would be that Unity comes with the Unity Asset Store, a marketplace for acquiring creator made assets. This feature is important because, for example, instead of having to create custom models for the vehicles, they could instead be purchased using the given budget. This saves a lot of time, that could be better spent on other parts of the project. One of the more notable purchased assets is Edy's Vehicle Physics\cite{edy} that are used to rig vehicle models with realistic physics. Instead of having to develop custom vehicle physics for each model, the team could instead use the asset to quickly configure a model with physics.
+        Another reason is Unity's larger user base, resulting in a larger amount of resources such as tutorials and useful development tools. They also have a much larger asset store compared to Unreal Engine, making finding models and other helpful assets easier and with a higher chance to exist. One of the more notable purchased assets is Edy's Vehicle Physics that are used to rig vehicle models with realistic physics \cite{edy}. Instead of having to develop custom vehicle physics for each model, the team could instead use the asset to quickly configure a model with physics.
 
-    The final reason why Unity was chosen, was due to its flexible developing structure. The level of customization available inside the engine is a lot greater in comparison to Unreal Engine. However, because of this, Unity ends up being more unstable whereas Unreal is far more stable and robust.
+        The final reason why Unity was chosen, was due to its flexible developing structure and higher level of freedom when it comes to implementing solutions. Unity is more based around developing with scripts and conventional object oriented programming. While Unreal Engine has more advanced tools that might yield better results, they end up taking longer to learn. The level of customization available inside the engine is greater in comparison to Unreal Engine. However, because of this, Unity ends up being more unstable whereas Unreal is far more stable and robust.
 
 % WRITTEN BY JAKOB WINDT, 2023
 % \subsection{Balsamiq Wireframes}
 %    During the first stage of creating a UI, it is important to start with a simple mock-up design. This is what the tool, Balsamiq Wireframes\cite{balsamiq-wireframes}, is used for. The user can quickly design wire frames depicting how the UI will appear during different times in the program. This includes everything from buttons to pop-up menu's that might appear in the simulation tool.
 
-%% WRITTEN BY JAKOB WINDT, 2023
-\subsection{Third-Party Assets}
-    Built into Unity is their asset store. Instead of creating everything from scratch, the team opted to purchase some assets. An asset can be anything from a 3D model to animation and scripts. Multiple assets were purchased throughout the development period of the project. These assets include more impactful ones such as Edy's Vehicle Physics and Bézier Path Creator\cite{bpc}. Edy's Vehicle Physics is a package that includes a tool that allows its user to easily implement realistic vehicle physics into 3d models, while the Bézier Path Creator is a light-weight editor for creating paths in the editor. This saves a substantial amount of time because they removed the need to design custom tools for these tasks.
+    % WRITTEN BY JAKOB WINDT, 2023
+    \subsection{Third-Party Assets}
+        Built into Unity is their asset store. Instead of creating everything from scratch, the team opted to purchase some assets. An asset can be anything from a 3D model to animation and scripts. Multiple assets were purchased throughout the development period of the project. These assets include more impactful ones such as Edy's Vehicle Physics and Bézier Path Creator\cite{bpc}. Edy's Vehicle Physics is a package that includes a tool that allows its user to easily implement realistic vehicle physics into 3d models, while the Bézier Path Creator is a light-weight editor for creating paths in the editor. This saves a substantial amount of time because they removed the need to design custom tools for these tasks.
 
     % WRITTEN BY JAKOB WINDT, 2023
-\subsection{GitHub}
-    A commonly used tool when developing software in larger groups is Git\cite{git}. Git is a free and open-source version control system that allows its users to collaborate in an efficient and easy way. 
+    \subsection{GitHub}
+        A commonly used tool when developing software in larger groups is Git\cite{git}. Git is a free and open-source version control system that allows its users to collaborate in an efficient and easy way. 
 
-    GitHub\cite{github} is an online software development platform that utilizes Git to store and track software projects. It allows for users to work in their own separate branches, and later merge those into the main repository. Before a team member can merge their new code to the main repository, the code would have to be reviewed by at least one other team member to ensure that the code was well commented, functional, and that it follows the C\# coding standard.
+        GitHub\cite{github} is an online software development platform that utilizes Git to store and track software projects. It allows for users to work in their own separate branches, and later merge those into the main repository. Before a team member can merge their new code to the main repository, the code would have to be reviewed by at least one other team member to ensure that the code was well commented, functional, and that it follows the C\# coding standard.
 
 
 \section{Simulation Design and Implementation}
-
     This section provides an overview of the development and functionality of the various software components we developed to create a traffic simulation. We delve into the use of composite Bézier curves for realistic road generation, the implementation of Points of Interest (POIs), and how our agents interact with these POIs. In addition, we explain how we employed so-called LaneNodes for vehicles' navigation. Furthermore, we detail how we integrated the previously mentioned A* algorithm for optimized pathfinding and how we utilized OpenStreetMap data to generate authentic cityscapes for the simulation environment.
 
     % WRITTEN BY HANNES KAULIO, 2023
     \subsection{ABM}
-        The different vehicles are simulated as independent agents. These agents do calculations based on their environment and chooses actions based on them. The environment is the road network with the roads, traffic light, intersections. The agents will check for traffic rules, other agent, traffic lights and intersections and decide were to steer and whether to brake or accelerate. 
+        The different vehicles are simulated as independent agents. These agents do calculations based on their environment and choose actions based on them. The environment is the road network with the roads, traffic light, intersections. The agents will check for traffic rules, other agent, traffic lights and intersections and decide were to steer and whether to brake or accelerate. 
 
     % WRITTEN BY HANNES KAULIO, 2023
     \subsection{Road Generation}
-     Composite Besier curves were used in order to achieve a more realistic road creation,  with more adequate curves. A number of parameters can be changed in the Bézier path to change the appearance. The Bézier control points will shape the road and its characteristics. The position and sharpness of the turn can be modified by changing were the control points are placed in relation to each other. 
-        \inlineimage{figures/method/road_generation/bezier_path_unity.png}{Composite Bézier path}{0.5}
+        Composite Bézier curves were used in order to achieve a more realistic road creation,  with more adequate curves. This can be seen in figure \ref{fig:unity-bezier-path}. A number of parameters can be changed in the Bézier path to change the appearance. The Bézier control points will shape the road and its characteristics. The position and sharpness of the turn can be modified by changing where the control points are placed in relation to each other. 
+        
+        \inlineimagewithlabel{figures/method/road_generation/bezier_path_unity.png}{Composite Bézier path}{0.5}{unity-bezier-path}
     
         While the Bézier curves give a good ground level for the road implementation, it is hard to implement and build logic based on it since it is a continuous path. The Bézier logic and its control points was abstracted away with a node implementation placed on top of the Bézier path. A number of nodes called RoadNodes is placed along the Bézier path at a rate dependent on curve of the road. The nodes are all connected the its previous and its next node along the path. The goal of these nodes is to carry enough information to procedurally  build the road mesh as well as carry some logic needed for agents to navigate the environment.
+        
         \inlineimagewithlabel{figures/method/road_generation/roadnodes.png}{Visual representation of RoadNodes places along a Composite Bézier path}{0.5}{road-nodes}
     
         By using the RoadNodes, visualised in figure \ref{fig:road-nodes}, generating the road mesh is possible. The mesh is procedurally generated by placing vertices at the RoadNode and along its normal line in both directions at a length equal to the width of a lane. If multiple lanes is wanted, vertices can be continually added in each normal direction for the lane amount. In addition to these, vertices are also placed below them to add thickness to the road. Triangles are then drawn between these vertices to create the mesh. To add the road material, sub meshes is created for each lane. The power of procedural generation is the ability to customize the roads different parameters. The width of the lanes, width of the lines, thickness of the road and number of lanes can all be changed for each road.
-    
-        \inlineimage{figures/method/road_generation/road_mesh_generation.png}{The vertices and triangles used to generate the one lane road mesh}{0.5}
-    
-        \inlineimage{figures/method/road_generation/road.png}{Road generated from its RoadNodes}{0.5}
-    
+
         While the RoadNodes carry a lot of critical logic, it is lacking logic for driving along the different road lanes. This logic is added with another node that is placed along the lanes, the LaneNode. LaneNodes are placed at both sides of the normal line of each RoadNode at the middle of the lanes. These nodes are responsible for the road steering as well as notifying other agents if they are currently occupied by any agents.
     
         \inlineimage{figures/method/road_generation/lane_nodes.png}{Visual representation of RoadNodes (Red) and LaneNodes (Green)}{0.5}
@@ -85,9 +87,11 @@
 
     % WRITTEN BY HANNES KAULIO, 2023
     \subsection{OpenStreetMap integration}
-        To aid in simulating cities and larger areas, existing real life locations are generated from OSM data. An OSM file of an specified area can be downloaded and then used as an input for the simulation. The data in the file specify the latitude and longitude of every road and its characteristics such as the path, speed limit, road name and the amount of lanes. Building, nature data is also available. The simulation tool will then parse the file and generate a to-scale replica of the road network in the given location and its characteristics. To add to the level of realism, the buildings and nature is also generated. This feature allows testing of existing locations without having to build up a replica by hand.
+        To aid in simulating cities and larger areas, existing real life locations are generated from OSM data. An OSM file of an specified area can be downloaded and then used as an input for the simulation. The data in the file specify the latitude and longitude of every road and its characteristics such as the path, speed limit, road name and the amount of lanes. Building, nature data is also available. The simulation tool will then parse the file and generate a to-scale replica of the road network in the given location and its characteristics. To add to the level of realism, the buildings and nature is also generated. This feature allows testing of existing locations without having to build up a replica by hand. A generated map of Masthugget, a district of Gothenburg, can be seen in \ref{fig:masthugget}.
+        
+        \inlineimagewithlabel{figures/method/road_generation/masthugget.png}{Masthugget, Gothenburg, generated from an OSM file}{0.5}{masthugget}
 
-        Furthermore, the POI system is integrated with the OSM tool. The parking loots, bus stops, fuel stations and houses that exist in the given file is simulated as POIs. This allows the agents to exhibit a behavior were they actively travel to POIs and conduct their business. Busses will travel to its bus stops while the cars will travel to parking spots, fuel stations houses.
+        Furthermore, the POI system is integrated with the OSM tool. The parking lots, bus stops, fuel stations and houses that exist in the given file is simulated as POIs. This allows the agents to interact with their environment, as outlined in \ref{poi}.
 
 
 \section{Performance}
@@ -109,7 +113,6 @@
     \subsection{Performance Benchmarks}
 
 \section{User Interface}
-
 This section will delve into how we implemented our user interface (UI), which serves as the primary point of interaction between the user and the simulation. We focus on its two main elements: the start menu and the run-time overlay, which the user interacts with while the simulation is running. Furthermore, we provide an overview of our approach to presenting statistics gathered from the simulation during run-time.
     
     %% WRITTEN BY JAKOB WINDT, 2023

@@ -1,7 +1,14 @@
 % UPDATED BY MARCUS SCHAGERBERG, 2023
 % CREATED BY WOLFGANG AHRENDT, 2021
 
+% WRITTEN BY JAKOB WINDT, 2023
 \section{Final product}
+    The end product is a simulation tool that is capable of simulating vehicles driving in a road network. The road network can either be generated through an imported OSM file, or custom built with the use of an editor tool that was custom made during the project. The road network has support for both three and four way intersections. These intersections can either be controlled by traffic lights or stop signs depending on the users need. The vehicles themselves are all capable of individually navigating a correctly built road network. The vehicles interacts with their surroundings using the RoadNode and LaneNodes built into the roads. From these nodes, the vehicle can collect data about whether a node ahead of them is occupied, the current speed limit of the road, or if the vehicles needs to stop due to a red light or stop sign. 
+
+    To use the simulation tool, an UI was created to allow the user to interact with it. It consists of a main menu with an included settings page. In addition, there is an overlay menu that is visible while the simulation is running. With this overlay menu the user can access statistics about an individual vehicle or the entire road network. The statistics are represented through a series of data points and graphs to easily display different statistical aspects of the simulated road network. The user can also spawn and change the amount of vehicles in the network. 
+
+    By using the Unity Editor, the user can as mentioned customize the simulation world. The user can also create roads, add intersections, and add POIs. Furthermore, its possible to add busses that travel in-between the bus stop POIs. Another POI that is possible to add would be parking spots. These parking spots can either be attached to a road as street side parking, or as individual parking lots. 
+
 
 \section{Performance}
     % Mention that it was found through the profiler that one of the heaviest operations is updating the vehicle physics

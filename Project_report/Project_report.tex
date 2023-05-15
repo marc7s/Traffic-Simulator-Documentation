@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,twoside,openright]{report}
+\documentclass[12pt,a4paper,oneside,openright]{report}
 \input{modules/settings/settings}
 
 \usepackage{modules/frontmatter/commands}
@@ -16,6 +16,12 @@
 \usepackage{fancyhdr}
 \usepackage{xcolor}
 \usepackage{siunitx}
+
+% Potentiell spacing fix för subsections
+% \usepackage{titlesec}
+% \titlespacing*{\subsection}{0pt}{0pt}{0pt}
+
+
 
 \usepackage{listings}
 \lstdefinestyle{csharp}{
@@ -123,16 +129,4 @@
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography}
 
-% Appendix
-\cleardoublepage
-\begin{appendices}
-    \setcounter{page}{1}
-    % Capitalized roman numbering starting from I (one)
-    \pagenumbering{Roman}
-    \chapter{Appendix 1}
-        This is where we will place appendix 1
-    
-    \chapter{Appendix 2}
-        This is where we will place appendix 2
-\end{appendices}
 \end{document}

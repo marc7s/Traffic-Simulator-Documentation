@@ -2,11 +2,11 @@
 % CREATED BY WOLFGANG AHRENDT, 2021
 
 % WRITTEN BY JAKOB WINDT & MARTIN BLOM, 2023
-This section will present the tools and methods used throughout the project, and how certain aspects were implemented. Firstly we explain our thought processes on choosing any existing tools, and then present any tools that were created in order to aid in the development. Lastly we present the workflow that was used, from the planning to the organization and testing methodology.
+This section will present the tools and methods used throughout the project, and how certain aspects were implemented. Firstly we explain our thought processes on choosing any existing tools, and then present any tools that were created in order to aid in the development. Lastly we present the workflow that was used, from the planning to the organisation and testing methodology.
 
 % EDITED BY MARTIN BLOM, 2023
 \section{Tools}
-    In the following section we will review the software tools that significantly influenced our development process, and the motivation behind choosing these tools. Central to our discussion is the choice of Unity as our primary game engine, over other established alternatives such as Unreal Engine. We will delve into the key factors that influenced this decision, encompassing the team's familiarity with Unity's primary programming language, C\#, the advantageous size of the Unity Asset Store, and the engine's flexibility. Finally, we will provide a brief overview of how we utilized GitHub for efficient version control.
+    In the following section we will review the software tools that significantly influenced our development process, and the motivation behind choosing these tools. Central to our discussion is the choice of Unity as our primary game engine, over other established alternatives such as Unreal Engine. We will delve into the key factors that influenced this decision, encompassing the team's familiarity with Unity's primary programming language, C\#, the advantageous size of the Unity Asset Store, and the engine's flexibility. Finally, we will provide a brief overview of how we utilised GitHub for efficient version control.
 
     % WRITTEN BY JAKOB WINDT, 2023
     % EDITED BY MARTIN BLOM, 2023
@@ -15,7 +15,7 @@ This section will present the tools and methods used throughout the project, and
 
         Another reason is Unity's larger user base, resulting in more resources such as tutorials and useful development tools. They also have a more comprehensive asset store compared to Unreal Engine, making finding models and other helpful assets likelier and easier. One of the most notable assets used is Edy's Vehicle Physics that allows for realistic vehicle physics\cite{edy}. This circumvents the need to develop a custom vehicle physics engine, instead enabling the team to use the asset to quickly configure the vehicles.
 
-        The final reason why Unity was chosen, was due to its flexible developing structure and higher level of freedom when it comes to implementing solutions. Unity revolves around developing with scripts and conventional object oriented programming. In comparison, Unreal Engine has more advanced tools that might yield better results, although end up taking longer to learn. The level of customization available inside the engine is greater in comparison to Unreal Engine. However, because of this, Unity ends up being more unstable whereas Unreal is far more stable and robust.
+        The final reason why Unity was chosen, was due to its flexible developing structure and higher level of freedom when it comes to implementing solutions. Unity revolves around developing with scripts and conventional object oriented programming. In comparison, Unreal Engine has more advanced tools that might yield better results, although end up taking longer to learn. The level of customisation available inside the engine is greater in comparison to Unreal Engine. However, because of this, Unity ends up being more unstable whereas Unreal is far more stable and robust.
 
     % WRITTEN BY JAKOB WINDT, 2023
     \subsection{Third-Party Assets}
@@ -25,11 +25,11 @@ This section will present the tools and methods used throughout the project, and
     \subsection{GitHub}
         A commonly used tool when developing software in larger groups is Git\cite{git}. Git is a free and open-source version control system that allows its users to collaborate in an easy and efficient way. 
 
-        GitHub\cite{github} is an online software development platform that utilizes Git to store and track software projects. It allows for users to work in their own separate branches, and later merge those into the main repository. This feature was used in the project. Prior to merging new code to the main repository, the code was required to be reviewed by at least one other team member to ensure that the code was well commented, functional, and that it followed the C\# coding standard.
+        GitHub\cite{github} is an online software development platform that utilises Git to store and track software projects. It allows for users to work in their own separate branches, and later merge those into the main repository. This feature was used in the project. Prior to merging new code to the main repository, the code was required to be reviewed by at least one other team member to ensure that the code was well commented, functional, and that it followed the C\# coding standard.
 
 
 \section{Simulation Design and Implementation}
-    This section provides an overview of the development and functionality of the various software components we developed to create a traffic simulation. We delve into the use of composite Bézier curves for realistic road generation, the implementation of points of interest, and how our agents interact with these. In addition, we explain how we employed nodes for vehicles' navigation. Furthermore, we outline how we integrated the previously mentioned A* algorithm for optimized pathfinding, and how we utilized OpenStreetMap data to generate authentic cityscapes for the simulation environment.
+    This section provides an overview of the development and functionality of the various software components we developed to create a traffic simulation. We delve into the use of composite Bézier curves for realistic road generation, the implementation of points of interest, and how our agents interact with these. In addition, we explain how we employed nodes for vehicles' navigation. Furthermore, we outline how we integrated the previously mentioned A* algorithm for optimised pathfinding, and how we utilised OpenStreetMap data to generate authentic cityscapes for the simulation environment.
 
 
 
@@ -42,7 +42,7 @@ This section will present the tools and methods used throughout the project, and
         While the Bézier curves provides a good base for the road implementation, it is hard to build and implement logic for it since it is a continuous path. The Bézier logic and its control points were abstracted away with a node implementation in addition to the Bézier path. A number of nodes called RoadNodes are placed along the Bézier path at a rate dependent on the curvature of the road. The nodes are all connected to their previous and next nodes along the path. The goal of these nodes is to carry enough information to procedurally build the road mesh, and provide the logic needed for the agents to navigate the road network.
         \inlineimagewithlabel{figures/method/road_generation/roadnodes.png}{Visual representation of RoadNodes places along a Composite Bézier path}{0.5}{road-nodes}
     
-        By using the RoadNodes, visualised in figure \ref{fig:road-nodes}, generating the road mesh is possible. The mesh is procedurally generated by placing vertices offset from the RoadNode by the width of a lane. If multiple lanes should be generated, additional vertices are added in each normal direction. Triangles are then drawn between the vertices to create the mesh. To add the road material, the lanes are split into sub meshes, making it easy to generate the road lines. The power of procedural generation is the ability to customize the different road parameters. These include the number of lanes, width of each lane as well as the thickness of the road.
+        By using the RoadNodes, visualised in figure \ref{fig:road-nodes}, generating the road mesh is possible. The mesh is procedurally generated by placing vertices offset from the RoadNode by the width of a lane. If multiple lanes should be generated, additional vertices are added in each normal direction. Triangles are then drawn between the vertices to create the mesh. To add the road material, the lanes are split into sub meshes, making it easy to generate the road lines. The power of procedural generation is the ability to customise the different road parameters. These include the number of lanes, width of each lane as well as the thickness of the road.
 
         While the RoadNodes carry critical logic, it lacks logic for driving along the lanes. This logic is added through a different node type, called LaneNodes, placed along the lanes. LaneNodes are positioned at both sides of each RoadNode, in the center of each lane. These nodes are used by the vehicles as steering targets, as well as to notify other vehicles if they are currently occupied.
         \inlineimage{figures/method/road_generation/lane_nodes.png}{Visual representation of RoadNodes (Red) and LaneNodes (Green)}{0.4}
@@ -94,7 +94,7 @@ This section will present the tools and methods used throughout the project, and
 
 
 \section{Performance}
-    This section addresses design choices made to optimize the performance of the simulation. Given the goal for the simulation to host a large number of simultaneous agents, this was a critical consideration. We highlight optimization strategies employed to handle performance intensive aspects of the simulation, such as concurrent active vehicles and the roads themselves. Performance benchmarks are then presented to give the reader a comparison between different settings.
+    This section addresses design choices made to optimise the performance of the simulation. Given the goal for the simulation to host a large number of simultaneous agents, this was a critical consideration. We highlight optimisation strategies employed to handle performance intensive aspects of the simulation, such as concurrent active vehicles and the roads themselves. Performance benchmarks are then presented to give the reader a comparison between different settings.
 
     % WRITTEN BY JAKOB WINDT, 2023
     \subsection{Quality vs Performance}
@@ -104,8 +104,8 @@ This section will present the tools and methods used throughout the project, and
         While testing the simulation during development, the most noticeable performance cost were the vehicles. This is because of Edy's Vehicle Physics, an asset that simulates real-world physics for each vehicle in the network. To circumvent this issue, a vehicle performance mode was implemented. This performance mode would disable the EVP asset, and instead move the cars by offsetting their individual object transform. As a result, the performance cost of the vehicles would decrease, and allow for more traffic in the road network.
     
     % WRITTEN BY JAKOB WINDT, 2023
-    \subsection{Optimization} 
-        When creating software of any kind, it is important to make sure it is able to run smoothly. This was achieved through the use of optimizations. There are two areas in the simulation that are costly performance-wise: the vehicles on the roads and the roads themselves. To optimise the vehicles, as mentioned earlier, a performance mode was implemented. This allowed the simulation to halt calculating the physics for each vehicle. 
+    \subsection{Optimisation} 
+        When creating software of any kind, it is important to make sure it is able to run smoothly. This was achieved through the use of optimisations. There are two areas in the simulation that are costly performance-wise: the vehicles on the roads and the roads themselves. To optimise the vehicles, as mentioned earlier, a performance mode was implemented. This allowed the simulation to halt calculating the physics for each vehicle. 
     
         Furthermore, since the simulation is in 3D, the details of the vehicle models had to be accounted for. A 3D model is created with vertices and triangles as described in section \ref{mesh-generation}. The amount of triangles in a model determines its resolution. To improve the performance of the simulation, the models that were chosen had a low triangle count.
 
@@ -151,9 +151,9 @@ This section will present the tools and methods used throughout the project, and
 
 % WRITTEN BY MARTIN BLOM, 2023
 \section{Workflow}
-    When developing larger softwares, the amount of work and information can quickly grow beyond the level of ones own comprehension. Therefore, these kinds of projects require rigorous planning and strategizing for them to function smoothly.
+    When developing larger softwares, the amount of work and information can quickly grow beyond the level of ones own comprehension. Therefore, these kinds of projects require rigorous planning and strategising for them to function smoothly.
 
-    To achieve this, a strict workflow framework was developed, where the first step was to analyze the work load and disposable time. This included drafting a time plan for the entire scope of the project, see figure \ref{fig:time-plan}. 
+    To achieve this, a strict workflow framework was developed, where the first step was to analyse the work load and disposable time. This included drafting a time plan for the entire scope of the project, see figure \ref{fig:time-plan}. 
 
     \begin{figure}[ht]
         \centering
@@ -162,7 +162,7 @@ This section will present the tools and methods used throughout the project, and
         \label{fig:time-plan}
     \end{figure}
 
-    With this system in place, it is easier to keep track of the general progress of the project and plan short term goals. Coincidentally, this is the next step in the workflow model. The short term goals where planned using a scrum framework with weekly sprints, explained later in \ref{sub:weekly-sprints}. These sprints were upheld for the duration of the project to keep a steady flow of progress. Together with the time plan, they create a clear way of visualizing the current state of the project.
+    With this system in place, it is easier to keep track of the general progress of the project and plan short term goals. Coincidentally, this is the next step in the workflow model. The short term goals where planned using a scrum framework with weekly sprints, explained later in \ref{sub:weekly-sprints}. These sprints were upheld for the duration of the project to keep a steady flow of progress. Together with the time plan, they create a clear way of visualising the current state of the project.
 
     The third aspect of the workflow is the approval of progress. As mentioned earlier, a large project requires a substantial amount of planning. The approval of progress can be just as important as the planning and execution itself. Without a proper method of approving new advancements or functionality, the project can quickly falter. If progress never goes through the process of approval, it can lead to problems later on. Evidently, inflexible code can cause issues that are easily preventable through quick inspections. Code can even be considered good, but with no input from the rest of the team, visions of how higher order elements will be implemented can differ. This can implicitly create  more complex problems further on, which can be difficult and time consuming to resolve. To solve this, code reviews were part of the workflow, as explained in section \ref{sub:code-reviewing}.
 

@@ -4,7 +4,7 @@
 
     In the project, we aim to implement the A* algorithm to find the shortest path on a graph consisting of nodes representing intersections, road ends, and points of interest (POIs). Here, POIs primarily serve as target destinations for our agents and may include parking lots, fuel stations and other relevant locations. By implementing the A* algorithm, we can develop dynamic heuristic functions that adapt to real-time events such as traffic accidents or road closures. This adaptability will lead to a more responsive system, ultimately improving the overall performance of the traffic simulation. 
     
-    In order to implement the A* algorithm, an open and closed set of nodes are utilized, as well as a few essential variables and functions. These are the key elements used in the algorithm:
+    In order to implement the A* algorithm, an open and closed set of nodes are utilised, as well as a few essential variables and functions. These are the key elements used in the algorithm:
 
     \begin{itemize}
         \item Start node $s$: The initial position from which the search begins.
@@ -17,7 +17,7 @@
 
     \begin{enumerate}
         \item Label the start node $s$ as "open" and compute $f(s)$.
-        \item Choose the open node $n$ with the smallest $f(s)$ value. In the case of a tie, the node is chosen randomly, but always prioritizes nodes in the target set $T$.
+        \item Choose the open node $n$ with the smallest $f(s)$ value. In the case of a tie, the node is chosen randomly, but always prioritises nodes in the target set $T$.
         \item If $n$ is in $T$, label $n$ as "closed" and conclude the algorithm.
         \item Otherwise, mark $n$ as closed and generate all adjacent nodes by exploring the neighboring nodes that can be reached from $n$ in the graph. Compute $f$ for each adjacent node of $n$ and label each adjacent node not already marked closed as "open". If a closed node $n_i$ is an adjacent node of $n$ and its current $f(n_{i})$ is smaller than its previous $f$ value when it was marked closed, relabel it as "open". Return to Step 2.
     \end{enumerate}

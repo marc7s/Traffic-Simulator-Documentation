@@ -1,7 +1,9 @@
 % UPDATED BY MARCUS SCHAGERBERG, 2023
 % CREATED BY WOLFGANG AHRENDT, 2021
+
 % WRITTEN BY JAKOB WINDT & MARTIN BLOM, 2023
 This section will present the tools and methods used throughout the project, and how certain aspects were implemented. Firstly we explain our thought processes on choosing any existing tools, and then present any tools that were created in order to aid in the development. Lastly we present the workflow that was used, from the planning to the organization and testing methodology.
+
 % EDITED BY MARTIN BLOM, 2023
 \section{Tools}
     In the following section we will review the software tools that significantly influenced our development process, and the motivation behind choosing these tools. Central to our discussion is the choice of Unity as our primary game engine, over other established alternatives such as Unreal Engine. We will delve into the key factors that influenced this decision, encompassing the team's familiarity with Unity's primary programming language, C\#, the advantageous size of the Unity Asset Store, and the engine's flexibility. Finally, we will provide a brief overview of how we utilized GitHub for efficient version control.
@@ -14,10 +16,6 @@ This section will present the tools and methods used throughout the project, and
         Another reason is Unity's larger user base, resulting in more resources such as tutorials and useful development tools. They also have a more comprehensive asset store compared to Unreal Engine, making finding models and other helpful assets likelier and easier. One of the most notable assets used is Edy's Vehicle Physics that allows for realistic vehicle physics\cite{edy}. This circumvents the need to develop a custom vehicle physics engine, instead enabling the team to use the asset to quickly configure the vehicles.
 
         The final reason why Unity was chosen, was due to its flexible developing structure and higher level of freedom when it comes to implementing solutions. Unity revolves around developing with scripts and conventional object oriented programming. In comparison, Unreal Engine has more advanced tools that might yield better results, although end up taking longer to learn. The level of customization available inside the engine is greater in comparison to Unreal Engine. However, because of this, Unity ends up being more unstable whereas Unreal is far more stable and robust.
-
-% WRITTEN BY JAKOB WINDT, 2023
-% \subsection{Balsamiq Wireframes}
-%    During the first stage of creating a UI, it is important to start with a simple mock-up design. This is what the tool, Balsamiq Wireframes\cite{balsamiq-wireframes}, is used for. The user can quickly design wire frames depicting how the UI will appear during different times in the program. This includes everything from buttons to pop-up menu's that might appear in the simulation tool.
 
     % WRITTEN BY JAKOB WINDT, 2023
     \subsection{Third-Party Assets}
@@ -80,7 +78,6 @@ This section will present the tools and methods used throughout the project, and
 
     % WRITTEN BY HANNES KAULIO, 2023
     \subsection{Navigation}
-        % FIX SPACE
         In addition to being able to follow the roads and handle intersections, the vehicles need to be able to navigate the road system. The road system can be thought of as a graph, with the roads as edges and each intersection and POI as a node, as seen in figure \ref{fig:navigation-graph}. After generating this graph from the road system, it is then possible to find the shortest paths between two points in the road system. In this project an implementation of the A* algorithm is used for this purpose.
         \inlineimagewithlabel{figures/method/road_generation/navigation_graph.png}{Visual representation of a navigation graph}{0.5}{navigation-graph}
     
@@ -88,7 +85,6 @@ This section will present the tools and methods used throughout the project, and
         
         Multi-target navigation is also possible. By receiving a number of destinations, the agent will travel to them in the given order. This is achieved by using the A* algorithm to find the shortest path to the first target, then it is repeatedly calculating the shortest path from the last target to the next. This is for example used by the buses to map out their entire bus route.
         
-
     % WRITTEN BY HANNES KAULIO, 2023
     \subsection{OpenStreetMap integration}
         To aid in simulating cities and larger areas, existing real life locations are generated from OSM data. An OSM file for a specified area can be downloaded and then used as an input for the simulation. The data in the file specifies the latitude and longitude of every road, and its characteristics such as the path, speed limit, road name and the amount of lanes. Building and nature data is also available. The simulation tool will then parse the file and generate a to-scale replica of the road network in the given location with its characteristics. To add to the level of realism, the buildings and nature are also generated. This feature allows testing of existing locations without having to build a replica by hand. A generated map of Masthugget, a district of Gothenburg, can be seen in Figure \ref{fig:masthugget}.
@@ -141,9 +137,9 @@ This section will present the tools and methods used throughout the project, and
 
         The individual vehicle statistics are used to give the user an easy overview of how a specific car is performing in traffic, see figure \ref{fig:UI-info}. It shows statistics such as fuel consumption, average speed and distance traveled. This can be useful to follow specific vehicles and investigate their behaviour in the road network. This is important to take into consideration because changes in the road system can lead to certain vehicles being negatively impacted. This allows the user to find these vehicles and investigate the issues.
 
-        \inlineimagewithlabel{figures/method/UI-info.png}{The statistics window on the info tab}{0.25}{UI-info}
+        \inlineimagewithlabel{figures/method/UI-info.png}{The statistics window on the info tab}{0.25}{UI-info} 
 
-        The world simulation statistics window gives the user an overview of the road networks overall efficiency, see figure. It indicates which areas and roads that are the busiest and therefore moves at the slowest pace. This is useful when locating the causes of traffic jams, and might give insight into possible solutions. Moreover the window is also useful to see how traffic would differ when changing the amount of public transport. Not only will this quickly show the differences in traffic flow but also the CO2 emission amount and fuel consumption over time, see \ref{fig:Emissions}.
+        The world simulation statistics window gives the user an overview of the road networks overall efficiency, see figure \ref{fig:UI-info}. It indicates which areas and roads that are the busiest and therefore moves at the slowest pace. This is useful when locating the causes of traffic jams, and might give insight into possible solutions. Moreover the window is also useful to see how traffic would differ when changing the amount of public transport. Not only will this quickly show the differences in traffic flow but also the CO2 emission amount and fuel consumption over time, see figure \ref{fig:Emissions}.
     
     \begin{figure}[ht]
         \centering

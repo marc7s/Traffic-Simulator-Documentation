@@ -1,0 +1,71 @@
+\subsection{Project role}
+    In the beginning of the project I was assigned the role of supervisor contact. However, during the project, the roles responsibility increased due to a team member leaving. The new responsibility included keeping contact and booking meetings with the "fackspråk" division at the Chalmers library.
+    
+\subsection{Tasks}
+    I contributed to most parts of the simulation tool in some way. Everything from modeling physics for the vehicles, designing the UI, and working on the OpenStreetMaps(OSM) implementation. More importantly, I was the lead developer of the vehicle spawning functionality in the simulation tool. It was a script called Carspawner that I began working in the earlier stages of the project, and that I tweaked and improved a few times to adapt it all the new features that were implemented throughout the project. 
+    
+    Some other notable things I created in the simulation would be,
+
+    \begin{itemize}
+        \item \textbf{TimeManager} - A script that handles time based events based on the in game time. Implemented using a calendar queue. An example, would be the buses that use it to follow their schedules.
+        \item \textbf{Benchmarker} - A script that was used to perform performance benchmarks.
+        \item \textbf{Traffic Lights} - The spawning of traffic lights in intersections, and the needed logic for them to function.
+        \item \textbf{OSM Roofs} - Since OSM data only supplies the coordinate locations of the corners of buildings, I had to implement triangulation by ear clipping to create the roofs of each building.
+        
+    \end{itemize}
+
+    This summarizes the main areas that I contributed with to the project, but not every detail due to the scale of the project. 
+
+\subsection{Report}
+    For the report I wrote mostly in methods, results, discussion and conclusion. Table \ref{Tab:jakob-authored-sections} below displays all the section I wrote by myself, one being co-authored with Marcus Schagerberg. Not included in the table, I also wrote some of the meta texts in the report. Lastly, I spent a lot of time towards the end of the project to spell check and fix grammars in the entire report. 
+    
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{cc}
+            \begin{tabular}{|c|c|c|}
+                %% ----- >>> HEADERS -----
+                \hline
+                \textbf{Section number} & \textbf{Section name} & \textbf{Co-author}
+                \\\hline
+                %% ----- <<< HEADERS -----
+                %% ----- >>> VALUES -----
+                
+                3.1.1 & Unity & Martin Blom
+                \\\hline
+                3.1.2 & Third-party Assets & 
+                \\\hline
+                3.1.3 & GitHub & 
+                \\\hline
+                3.3.1 & Quality vs Performance & 
+                \\\hline
+                3.3.2 & Optimization & 
+                \\\hline
+                3.4.1 & Design & 
+                \\\hline
+                3.5.2 & Trello & Felix Jönsson
+                \\\hline
+                4.1 & Final Product & 
+                \\\hline
+                5.1 & Performance Evaluation & 
+                \\\hline
+                5.4 & Development Process & 
+                \\\hline
+                5.5.1 & Road and Intersection Types & Marcus Schagerberg
+                \\\hline
+                5.5.2 & OSM & 
+                \\\hline
+                5.5.3 & Vehicle Types &
+                \\\hline
+                6.3 & Future Usage of the Simulation &
+                \\\hline
+                6.4 & Learning Outcome &
+                
+                %% ----- <<< VALUES -----
+                \\\hline
+            \end{tabular}
+            
+            \\
+        \end{tabular}
+        \caption{Jakob's authored project report sections}
+        \label{Tab:jakob-authored-sections}
+    \end{table}

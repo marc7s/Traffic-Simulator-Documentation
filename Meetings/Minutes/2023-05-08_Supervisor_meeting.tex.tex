@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{../../preamble}
+\usepackage{minutes_preamble}
+\usepackage{fancyhdr}
+
+
+%%%%% Update this each meeting %%%%%
+\newcommand{\meetingdate}{2023-05-08}
+\newcommand{\meetingtime}{15:30}
+\newcommand{\meetingplace}{Online, Discord}
+\newcommand{\meetingname}{Supervisor meeting}
+\newcommand{\secretary}{\martin}
+\newcommand{\adjuster}{\hannes}
+\newcommand{\attendees}{\martin \and \felix \and \hannes \and \marcus \and \jakob}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+  
+\begin{document}
+    %!!!!! Do not touch !!!!!%
+    \begin{titlepage}
+        \settitle{\meetingname}
+        \date{\meetingdate}
+        \maketitle
+        
+        \thispagestyle{first}
+        
+        \timeanddate{\meetingdate \space \meetingtime}
+        \place{\meetingplace}
+        \called{\members}
+        \attended{\members}
+    \end{titlepage}
+    \newpage
+    \pagestyle{fancy}
+    %!!!!!!!!!!!!!!!!!!!!!!!!%
+
+    %%%%% Meeting protocol %%%%%
+    \section{Opening}
+
+    \section{Approval of previous minutes}
+        \approve{\hannes}
+
+    \section{Notes}
+        \begin{itemize}
+            \item 15th of May final report hand in.
+            \item 16th of May group assessment.
+            \item 17th of May submission of "film/movie".
+            \item 22nd of May last individual opposition.
+        \end{itemize}
+
+    \section{Discussion}
+        Supervisor a little late to meeting due to lecture. The team has discovered that hand in date on report is closer than previously thought. All feedback on report has been fixed, more will be sent for feedback soon. 
+
+    \section{Decisions}
+
+        \begin{itemize}
+            \item No significant decisions were made during the meeting.
+        \end{itemize}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
